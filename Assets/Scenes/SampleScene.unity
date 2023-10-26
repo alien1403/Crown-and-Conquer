@@ -227,9 +227,9 @@ GameObject:
   - component: {fileID: 1089518119}
   - component: {fileID: 1089518118}
   - component: {fileID: 1089518117}
+  - component: {fileID: 1089518122}
   - component: {fileID: 1089518121}
   - component: {fileID: 1089518123}
-  - component: {fileID: 1089518122}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -389,7 +389,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3
+  sprintSpeed: 8
   moveDirection: {x: 0, y: 0}
+  sprintDuration: 10
 --- !u!95 &1089518122
 Animator:
   serializedVersion: 5
