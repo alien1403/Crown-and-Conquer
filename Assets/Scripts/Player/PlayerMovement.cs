@@ -99,7 +99,6 @@ public class PlayerMovement : MonoBehaviour
                 sprint.elapsedSprintCooldown = false;
             }
         }
-        Debug.Log(sprint.sprintCooldown);
         if (Input.GetKeyDown(KeyCode.D))
         {
             sprint.CheckSprint(sprintDuration, KeyCode.D);
