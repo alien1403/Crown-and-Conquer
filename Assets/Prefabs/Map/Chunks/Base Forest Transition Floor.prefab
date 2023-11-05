@@ -94,9 +94,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2602295193048958230}
   - component: {fileID: 8876748759940756030}
-  - component: {fileID: 1299488699980563505}
+  - component: {fileID: 1231071398513443098}
   m_Layer: 6
-  m_Name: Base Floor Chunk
+  m_Name: Base Forest Transition Floor
   m_TagString: Chunk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -166,7 +166,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 14.4, y: 0.6}
   m_EdgeRadius: 0
---- !u!114 &1299488699980563505
+--- !u!114 &1231071398513443098
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -178,7 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72b23fa8b350f124ea857e63128c191f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chunkProperties: {fileID: 11400000, guid: 4ca153809562b8a408e36368523cf058, type: 2}
+  chunkProperties: {fileID: 11400000, guid: 7e6a00d18fa69504194896e41e704a6e, type: 2}
 --- !u!1 &6567502749746591131
 GameObject:
   m_ObjectHideFlags: 0

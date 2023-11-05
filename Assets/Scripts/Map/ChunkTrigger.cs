@@ -27,8 +27,8 @@ public class ChunkTrigger : MonoBehaviour
             if(mapController.currentChunk == targetMap)
             {
                 mapController.currentChunk = null;
-                mapController.latestChunk = transform.parent.gameObject;
             }
         }
     }
+    
 }
