@@ -49,4 +49,8 @@ public class PlayerAnimator : MonoBehaviour
             }
         }
     }
+    public void SetSprint(bool value)
+    {
+        animator.SetBool("Sprint", value);
+    }
 }

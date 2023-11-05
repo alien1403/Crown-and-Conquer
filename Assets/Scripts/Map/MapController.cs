@@ -1,11 +1,14 @@
 using System;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.UIElements;
 using static ChunkPropertiesScriptableObject;
 
 public class MapController : MonoBehaviour
 {
-    public List<GameObject> terrainChunks;
+    public List<GameObject> baseChunks;
+    public List<GameObject> forestChunks;
     public GameObject player;
     public float checkerRadius;
     Vector3 noTerrainPosition;
@@ -28,6 +31,20 @@ public class MapController : MonoBehaviour
     public float optimizerCooldownDuration;
     private ChunkType currentChunkType { get; set; }
     private ChunkType previousChunkType { get; set; }
+
+    [Header("World Generation")]
+    public int MinLeftForestChunks;
+    public int MinRightForestChunks;
+    public int MinLeftBaseChunks;
+    public int MinRightBaseChunks;
+    public int MinLeftIntermediaryChunks;
+    public int MinRightIntermediaryChunks;
+    public int MaxLeftForestChunks;
+    public int MaxRightForestChunks;
+    public int MaxLeftBaseChunks;
+    public int MaxRightBaseChunks;
+    public int MaxLeftIntermediaryChunks;
+    public int MaxRightIntermediaryChunks;
     void Start()
     {
         currentChunkType = currentChunk.GetComponent<ChunkProperties>().chunkProperties.Type;
@@ -45,11 +62,12 @@ public class MapController : MonoBehaviour
                 parallax.camera = CameraTarget;
             }
         }
+        GenerateWorld();
     }
 
     void Update()
     {
-        ChunkChecker();
+        //ChunkChecker();
         ChunkOptimizer();
     }
     void ChunkChecker()
@@ -77,8 +95,8 @@ public class MapController : MonoBehaviour
     }
     void SpawnChunk()
     {
-        int rand = UnityEngine.Random.Range(0, terrainChunks.Count);
-        latestSpawnedChunk = Instantiate(terrainChunks[rand], noTerrainPosition, Quaternion.identity);
+        int rand = UnityEngine.Random.Range(0, baseChunks.Count);
+        latestSpawnedChunk = Instantiate(baseChunks[rand], noTerrainPosition, Quaternion.identity);
         latestSpawnedChunk.transform.parent = currentChunk.transform.parent;
         spawnedChunks.Add(latestSpawnedChunk);
     }
@@ -134,6 +152,42 @@ public class MapController : MonoBehaviour
                 Fade fadeIn = backgroundLayers[(int)currentChunkType][counter].GameObject.GetComponent<Fade>();
                 StartCoroutine(fadeIn.StartFadeWithDelay(fadeIn.DoFadeIn, delay));
             }
+        }
+    }
+    public void GenerateWorld()
+    {
+        System.Random random = new System.Random();
+        int LeftBaseChunks = random.Next(MinLeftBaseChunks, MaxLeftBaseChunks + 1);
+        int FirstLeftForestChunks = random.Next(MinLeftForestChunks, MaxLeftForestChunks + 1);
+        int SecondLeftForestChunks = random.Next(MinLeftForestChunks, MaxLeftForestChunks + 1);
+        int LeftIntermediaryChunks = random.Next(MinLeftIntermediaryChunks, MaxLeftIntermediaryChunks + 1);
+        int RightBaseChunks = random.Next(MinRightBaseChunks, MaxRightBaseChunks + 1);
+        int FirstRightForestChunks = random.Next(MinRightForestChunks, MaxRightForestChunks + 1);
+        int SecondRightForestChunks = random.Next(MinRightForestChunks, MaxRightForestChunks + 1);
+        int RightIntermediaryChunks = random.Next(MinRightIntermediaryChunks, MaxRightIntermediaryChunks + 1);
+        GameObject lastChunk = currentChunk;
+        GenerateArea("Left", lastChunk, LeftBaseChunks, baseChunks);
+        GenerateArea("Left", lastChunk, FirstLeftForestChunks, forestChunks);
+        GenerateArea("Left", lastChunk, LeftIntermediaryChunks, baseChunks);
+        GenerateArea("Left", lastChunk, SecondLeftForestChunks, forestChunks);
+        lastChunk = currentChunk;
+        GenerateArea("Right", lastChunk, RightBaseChunks, baseChunks);
+        GenerateArea("Right", lastChunk, FirstRightForestChunks, forestChunks);
+        GenerateArea("Right", lastChunk, RightIntermediaryChunks, baseChunks);
+        GenerateArea("Right", lastChunk, SecondRightForestChunks, forestChunks);
+    }
+    void GenerateArea(string staticPoint, GameObject lastChunk, int nrChunks, List<GameObject> chunkPool) 
+    {
+        Vector3 chunkPosition;
+        GameObject current;
+        System.Random random = new System.Random();
+        for (int i = 0; i < nrChunks; i++)
+        {
+            chunkPosition = lastChunk.transform.Find(staticPoint).position;
+            current = Instantiate(chunkPool[random.Next(0, chunkPool.Count)], chunkPosition, Quaternion.identity);
+            current.transform.parent = currentChunk.transform.parent;
+            spawnedChunks.Add(current);
+            lastChunk = current;
         }
     }
 }
