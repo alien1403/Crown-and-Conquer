@@ -7,15 +7,16 @@ using static ChunkPropertiesScriptableObject;
 
 public class MapController : MonoBehaviour
 {
-    public List<GameObject> baseChunks;
-    public List<GameObject> forestChunks;
     public GameObject player;
     public float checkerRadius;
     Vector3 noTerrainPosition;
     public LayerMask terrainMask;
     PlayerMovement playerMovement;
     public GameObject currentChunk;
-
+    [Header("Chunks")]
+    public List<GameObject> baseChunks;
+    public List<GameObject> forestChunks;
+    public List<GameObject> marginChunks;
     [Header("Background")]
     public GameObject CameraTarget;
     public List<BackgroundLayersSpeed> baseBackgroundLayers;
@@ -45,6 +46,11 @@ public class MapController : MonoBehaviour
     public int MaxRightBaseChunks;
     public int MaxLeftIntermediaryChunks;
     public int MaxRightIntermediaryChunks;
+
+    [HideInInspector]
+    public float leftMostX;
+    [HideInInspector]
+    public float rightMostX;
     void Start()
     {
         currentChunkType = currentChunk.GetComponent<ChunkProperties>().chunkProperties.Type;
@@ -166,17 +172,25 @@ public class MapController : MonoBehaviour
         int SecondRightForestChunks = random.Next(MinRightForestChunks, MaxRightForestChunks + 1);
         int RightIntermediaryChunks = random.Next(MinRightIntermediaryChunks, MaxRightIntermediaryChunks + 1);
         GameObject lastChunk = currentChunk;
-        GenerateArea("Left", lastChunk, LeftBaseChunks, baseChunks);
-        GenerateArea("Left", lastChunk, FirstLeftForestChunks, forestChunks);
-        GenerateArea("Left", lastChunk, LeftIntermediaryChunks, baseChunks);
-        GenerateArea("Left", lastChunk, SecondLeftForestChunks, forestChunks);
+        GenerateArea("Left", ref lastChunk, LeftBaseChunks, baseChunks);
+        GenerateArea("Left", ref lastChunk, FirstLeftForestChunks, forestChunks);
+        GenerateArea("Left", ref lastChunk, LeftIntermediaryChunks, baseChunks);
+        GenerateArea("Left", ref lastChunk, SecondLeftForestChunks, forestChunks);
+        GenerateArea("Left", ref lastChunk, 1, baseChunks);
+        GenerateArea("Left", ref lastChunk, 1, marginChunks);
+        float spriteWidth = lastChunk.transform.Find("Floor").GetComponent<SpriteRenderer>().bounds.size.x;
+        leftMostX = lastChunk.transform.position.x - spriteWidth / 2;
         lastChunk = currentChunk;
-        GenerateArea("Right", lastChunk, RightBaseChunks, baseChunks);
-        GenerateArea("Right", lastChunk, FirstRightForestChunks, forestChunks);
-        GenerateArea("Right", lastChunk, RightIntermediaryChunks, baseChunks);
-        GenerateArea("Right", lastChunk, SecondRightForestChunks, forestChunks);
+        GenerateArea("Right", ref lastChunk, RightBaseChunks, baseChunks);
+        GenerateArea("Right", ref lastChunk, FirstRightForestChunks, forestChunks);
+        GenerateArea("Right", ref lastChunk, RightIntermediaryChunks, baseChunks);
+        GenerateArea("Right", ref lastChunk, SecondRightForestChunks, forestChunks);
+        GenerateArea("Right", ref lastChunk, 1, baseChunks);
+        GenerateArea("Right", ref lastChunk, 1, marginChunks);
+        lastChunk.transform.localScale = new Vector3(-lastChunk.transform.localScale.x, lastChunk.transform.localScale.y, lastChunk.transform.localScale.z);
+        rightMostX = lastChunk.transform.position.x + spriteWidth / 2;
     }
-    void GenerateArea(string staticPoint, GameObject lastChunk, int nrChunks, List<GameObject> chunkPool) 
+    void GenerateArea(string staticPoint,ref GameObject lastChunk, int nrChunks, List<GameObject> chunkPool) 
     {
         Vector3 chunkPosition;
         GameObject current;
@@ -185,7 +199,7 @@ public class MapController : MonoBehaviour
         {
             chunkPosition = lastChunk.transform.Find(staticPoint).position;
             current = Instantiate(chunkPool[random.Next(0, chunkPool.Count)], chunkPosition, Quaternion.identity);
-            current.transform.parent = currentChunk.transform.parent;
+            current.transform.parent = lastChunk.transform.parent;
             spawnedChunks.Add(current);
             lastChunk = current;
         }
