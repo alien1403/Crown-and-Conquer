@@ -21,10 +21,12 @@ public class PlayerAnimator : MonoBehaviour
         {
             if(playerMovement.sprint.isSprinting)
             {
+                animator.SetBool("Move", false);
                 animator.SetBool("Sprint", true);
             }
             else
             {
+                animator.SetBool("Sprint", false);
                 animator.SetBool("Move", true);
             }
             SpriteDirectionChecker();

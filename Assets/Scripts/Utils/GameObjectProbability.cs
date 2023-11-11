@@ -23,13 +23,23 @@ public class GameObjectProbability : IComparable<GameObjectProbability>
     }
     public static GameObject GetCorrespondentGameObject(ref List<GameObjectProbability> list, float probability)
     {
-        int index = list.BinarySearch(new GameObjectProbability { probability = probability });
-        if (index >= 0)
-            return list[index].gameObject;
-        int insertionPoint = -(~index);
-        if (insertionPoint > 0 && insertionPoint < list.Count)
-            return list[insertionPoint - 1].gameObject;
-        return list.Last().gameObject;
+        if (probability == 1)
+            return list.Last().gameObject;
+        int Left = 0, Right = list.Count, Mid;
+        while(Left < Right - 1)
+        {
+            Mid = (Left + Right) / 2;
+            if (probability < list[Mid].probability)
+                Right = Mid;
+            else
+            {
+                if (probability > list[Mid].probability)
+                    Left = Mid;
+                else
+                    return list[Mid].gameObject;
+            }
+        }
+        return list[Left].gameObject;
     }
 
     public int CompareTo(GameObjectProbability other)
