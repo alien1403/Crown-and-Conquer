@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 876ac12fda4942b478e71defa3918b08, type: 3}
+  m_Name: Base Chunk
+  m_EditorClassIdentifier: 
+  type: 1
+  layers:
+  - GameObject: {fileID: 0}
+    LayerSpeed: 0
+  - GameObject: {fileID: 0}
+    LayerSpeed: 0
+  - GameObject: {fileID: 8754807781232190879, guid: 5b42e4762e1b1c3498bcd826795bdeed, type: 3}
+    LayerSpeed: 0
+  - GameObject: {fileID: 1782866430624832327, guid: 0fe308eccb09a714fbb5b2dc5d07ef9c, type: 3}
+    LayerSpeed: 0.3
+  - GameObject: {fileID: 1247934954235194737, guid: b96e0cbbeb1c6e84a9043863b497c864, type: 3}
+    LayerSpeed: 0.7
+  - GameObject: {fileID: 5611197522707405072, guid: 22bd464a1adb73f4e90cdfb63e0a8b44, type: 3}
+    LayerSpeed: 1

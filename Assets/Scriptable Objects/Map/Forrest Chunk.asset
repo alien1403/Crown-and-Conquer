@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 876ac12fda4942b478e71defa3918b08, type: 3}
+  m_Name: Forrest Chunk
+  m_EditorClassIdentifier: 
+  type: 0
+  layers:
+  - GameObject: {fileID: 2015023331042780018, guid: d16b9ee16758b4741aa38423651549bb, type: 3}
+    LayerSpeed: 0
+  - GameObject: {fileID: 2309355625100824123, guid: 89d8ae75ebb690f42ac07d7ab5d87122, type: 3}
+    LayerSpeed: 0.2
+  - GameObject: {fileID: 1727471965668326119, guid: 5586c016ae775fc4c8f607460c300593, type: 3}
+    LayerSpeed: 0.4
+  - GameObject: {fileID: 8719847458905568665, guid: cbbf97c26c1f1044c9b66142b79c82f5, type: 3}
+    LayerSpeed: 0.6
+  - GameObject: {fileID: 549786306107811003, guid: b7bd40b26303f36419e78e8381d19119, type: 3}
+    LayerSpeed: 0.8
+  - GameObject: {fileID: 9084539568923072595, guid: 3c8de6f6caae5344b91aada872e37bbf, type: 3}
+    LayerSpeed: 1
