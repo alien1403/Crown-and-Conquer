@@ -53,7 +53,7 @@ public struct Sprint
     }
 }
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour, IDataPersistence
 {
     public float moveSpeed;
     public float sprintSpeed;
@@ -131,8 +131,18 @@ public class PlayerMovement : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Chunk"))
         {
-            mapController.UpdateCurrentChunk(collision.gameObject.GetComponent<ChunkProperties>().chunkProperties.Type);
+            mapController.UpdateCurrentChunk(collision.gameObject.GetComponent<ChunkProperties>().Type);
             mapController.CheckBackgroundChunk();
         }
+    }
+
+    public void LoadData(GameData gameData)
+    {
+        this.transform.position = gameData.playerPosition;
+    }
+
+    public void SaveData(ref GameData gameData)
+    {
+        gameData.playerPosition = this.transform.position;
     }
 }

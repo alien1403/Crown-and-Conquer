@@ -6,10 +6,12 @@ using UnityEngine;
 public class ChunkTrigger : MonoBehaviour
 {
     MapController mapController;
+    [HideInInspector]
     public GameObject targetMap;
     void Start()
     {
         mapController = FindObjectOfType<MapController>();
+        targetMap = transform.parent.gameObject;
     }
 
     // Update is called once per frame

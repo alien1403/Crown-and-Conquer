@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UIElements;
-using static ChunkPropertiesScriptableObject;
 
 public class MapController : MonoBehaviour
 {
@@ -53,7 +52,7 @@ public class MapController : MonoBehaviour
     public float rightMostX;
     void Start()
     {
-        currentChunkType = currentChunk.GetComponent<ChunkProperties>().chunkProperties.Type;
+        currentChunkType = currentChunk.GetComponent<ChunkProperties>().Type;
         previousChunkType = currentChunkType;
         playerMovement = FindObjectOfType<PlayerMovement>();
         backgroundLayers[(int)ChunkType.Base] = baseBackgroundLayers;
