@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6439607880007559805}
   - component: {fileID: 8791524720331003064}
+  - component: {fileID: -4370713735549372083}
   m_Layer: 0
   m_Name: bush tree (old)_0
   m_TagString: Untagged
@@ -84,3 +85,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-4370713735549372083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7660784549292791258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 274acf5b782120f4c821887f8e8796e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PrefabGUID: adefd233af00d054ba48e2e4632f769c

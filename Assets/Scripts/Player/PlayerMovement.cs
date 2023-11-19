@@ -53,7 +53,7 @@ public struct Sprint
     }
 }
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour, IDataPersistence
 {
     public float moveSpeed;
     public float sprintSpeed;
@@ -134,5 +134,15 @@ public class PlayerMovement : MonoBehaviour
             mapController.UpdateCurrentChunk(collision.gameObject.GetComponent<ChunkProperties>().chunkProperties.Type);
             mapController.CheckBackgroundChunk();
         }
+    }
+
+    public void LoadData(GameData gameData)
+    {
+        this.transform.position = gameData.playerPosition;
+    }
+
+    public void SaveData(GameData gameData)
+    {
+        gameData.playerPosition = this.transform.position;
     }
 }

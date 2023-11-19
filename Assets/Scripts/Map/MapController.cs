@@ -1,11 +1,9 @@
 using System;
 using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.UIElements;
 using static ChunkPropertiesScriptableObject;
 
-public class MapController : MonoBehaviour
+public class MapController : MonoBehaviour, IDataPersistence
 {
     public GameObject player;
     public float checkerRadius;
@@ -34,6 +32,7 @@ public class MapController : MonoBehaviour
     private ChunkType previousChunkType { get; set; }
 
     [Header("World Generation")]
+    public GameObject parentObject;
     public int MinLeftForestChunks;
     public int MinRightForestChunks;
     public int MinLeftBaseChunks;
@@ -53,8 +52,6 @@ public class MapController : MonoBehaviour
     public float rightMostX;
     void Start()
     {
-        currentChunkType = currentChunk.GetComponent<ChunkProperties>().chunkProperties.Type;
-        previousChunkType = currentChunkType;
         playerMovement = FindObjectOfType<PlayerMovement>();
         backgroundLayers[(int)ChunkType.Base] = baseBackgroundLayers;
         backgroundLayers[(int)ChunkType.Forest] = forestBackgroundLayers;
@@ -68,43 +65,12 @@ public class MapController : MonoBehaviour
                 parallax.camera = CameraTarget;
             }
         }
-        GenerateWorld();
+       
     }
 
     void Update()
     {
-        //ChunkChecker();
         ChunkOptimizer();
-    }
-    void ChunkChecker()
-    {
-        if (!currentChunk)
-        {
-            return;
-        }
-        if (playerMovement.moveDirection.x > 0)
-        {
-            if (!Physics2D.OverlapCircle(currentChunk.transform.Find("Right").position, checkerRadius, terrainMask))
-            {
-                noTerrainPosition = currentChunk.transform.Find("Right").position;
-                SpawnChunk();
-            }
-        }
-        if (playerMovement.moveDirection.x < 0)
-        {
-            if (!Physics2D.OverlapCircle(currentChunk.transform.Find("Left").position, checkerRadius, terrainMask))
-            {
-                noTerrainPosition = currentChunk.transform.Find("Left").position;
-                SpawnChunk();
-            }
-        }
-    }
-    void SpawnChunk()
-    {
-        int rand = UnityEngine.Random.Range(0, baseChunks.Count);
-        latestSpawnedChunk = Instantiate(baseChunks[rand], noTerrainPosition, Quaternion.identity);
-        latestSpawnedChunk.transform.parent = currentChunk.transform.parent;
-        spawnedChunks.Add(latestSpawnedChunk);
     }
     void ChunkOptimizer()
     {
@@ -171,6 +137,12 @@ public class MapController : MonoBehaviour
         int FirstRightForestChunks = random.Next(MinRightForestChunks, MaxRightForestChunks + 1);
         int SecondRightForestChunks = random.Next(MinRightForestChunks, MaxRightForestChunks + 1);
         int RightIntermediaryChunks = random.Next(MinRightIntermediaryChunks, MaxRightIntermediaryChunks + 1);
+        currentChunk = Instantiate(baseChunks[0], new Vector3(0, -1.6f, 0), Quaternion.identity);
+        currentChunk.transform.parent = parentObject.transform;
+        currentChunk.GetComponent<PropRandomizer>().SpawnProps();
+        spawnedChunks.Add(currentChunk);
+        currentChunkType = currentChunk.GetComponent<ChunkProperties>().chunkProperties.Type;
+        previousChunkType = currentChunkType;
         GameObject lastChunk = currentChunk;
         GenerateArea("Left", ref lastChunk, LeftBaseChunks, baseChunks);
         GenerateArea("Left", ref lastChunk, FirstLeftForestChunks, forestChunks);
@@ -200,8 +172,40 @@ public class MapController : MonoBehaviour
             chunkPosition = lastChunk.transform.Find(staticPoint).position;
             current = Instantiate(chunkPool[random.Next(0, chunkPool.Count)], chunkPosition, Quaternion.identity);
             current.transform.parent = lastChunk.transform.parent;
+            current.GetComponent<PropRandomizer>().SpawnProps();
             spawnedChunks.Add(current);
             lastChunk = current;
+        }
+    }
+
+    public void LoadData(GameData gameData)
+    {
+        DataPersistenceManager dataPersistanceManager = FindObjectOfType<DataPersistenceManager>();
+        foreach (ChunkPropertiesUtils chunkProperties in gameData.chunks)
+        {
+            GameObject newChunk = Instantiate(dataPersistanceManager.GetPrefabFromGUID(chunkProperties.chunkGUID), chunkProperties.position, Quaternion.identity);
+            newChunk.GetComponent<PropRandomizer>().SpawnPropsFromList(chunkProperties.propsGUIDs, dataPersistanceManager);
+            spawnedChunks.Add(newChunk);
+        }
+        currentChunk = spawnedChunks[gameData.CurrentChunkIndex];
+        currentChunkType = currentChunk.GetComponent<ChunkProperties>().chunkProperties.Type;
+        previousChunkType = currentChunkType;
+    }
+
+    public void SaveData(GameData gameData)
+    {
+        if(gameData.chunks.Count == 0)
+        {
+            foreach (GameObject chunk in spawnedChunks)
+            {
+                ChunkProperties chunkProp = chunk.GetComponent<ChunkProperties>();
+                gameData.chunks.Add(new ChunkPropertiesUtils
+                {
+                    position = chunk.transform.position,
+                    chunkGUID = chunkProp.chunkPrefabGUID,
+                    propsGUIDs = chunkProp.GetChunkPropPrefabsGUIDs()
+                });
+            }
         }
     }
 }

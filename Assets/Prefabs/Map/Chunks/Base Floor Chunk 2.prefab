@@ -156,8 +156,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2602295193048958230}
   - component: {fileID: 8876748759940756030}
-  - component: {fileID: 1299488699980563505}
   - component: {fileID: 4760422454528835484}
+  - component: {fileID: 584986721625224510}
   m_Layer: 6
   m_Name: Base Floor Chunk 2
   m_TagString: Chunk
@@ -230,19 +230,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 14.4, y: 0.6}
   m_EdgeRadius: 0
---- !u!114 &1299488699980563505
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5327353830407151998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72b23fa8b350f124ea857e63128c191f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chunkProperties: {fileID: 11400000, guid: 4ca153809562b8a408e36368523cf058, type: 2}
 --- !u!114 &4760422454528835484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,6 +291,20 @@ MonoBehaviour:
     probability: 1
   - gameObject: {fileID: 2133158117692628267, guid: 8b2db8efc75f0dc4c981874e354597a7, type: 3}
     probability: 1
+--- !u!114 &584986721625224510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5327353830407151998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72b23fa8b350f124ea857e63128c191f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chunkProperties: {fileID: 11400000, guid: 4ca153809562b8a408e36368523cf058, type: 2}
+  chunkPrefabGUID: d1d236b26af50424a82886bb821a2739
 --- !u!1 &6080655905104307793
 GameObject:
   m_ObjectHideFlags: 0
