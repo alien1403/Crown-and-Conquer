@@ -21,10 +21,12 @@ public class PlayerAnimator : MonoBehaviour
         {
             if(playerMovement.sprint.isSprinting)
             {
+                animator.SetBool("Move", false);
                 animator.SetBool("Sprint", true);
             }
             else
             {
+                animator.SetBool("Sprint", false);
                 animator.SetBool("Move", true);
             }
             SpriteDirectionChecker();
@@ -48,5 +50,9 @@ public class PlayerAnimator : MonoBehaviour
                 spriteRenderer.flipX = false;
             }
         }
+    }
+    public void SetSprint(bool value)
+    {
+        animator.SetBool("Sprint", value);
     }
 }

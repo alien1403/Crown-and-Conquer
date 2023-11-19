@@ -53,7 +53,7 @@ public struct Sprint
     }
 }
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour, IDataPersistence
 {
     public float moveSpeed;
     public float sprintSpeed;
@@ -62,8 +62,10 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 moveDirection;
     public Sprint sprint;
     public float sprintDuration;
+    private MapController mapController;
     void Start()
     {
+        mapController = FindObjectOfType<MapController>();
         rigidBody = GetComponent<Rigidbody2D>();
         sprint.sprintCooldown = sprintDuration;
         sprint.elapsedSprintCooldown = false;
@@ -99,7 +101,6 @@ public class PlayerMovement : MonoBehaviour
                 sprint.elapsedSprintCooldown = false;
             }
         }
-        Debug.Log(sprint.sprintCooldown);
         if (Input.GetKeyDown(KeyCode.D))
         {
             sprint.CheckSprint(sprintDuration, KeyCode.D);
@@ -125,5 +126,23 @@ public class PlayerMovement : MonoBehaviour
             rigidBody.velocity = new Vector2(moveDirection.x * moveSpeed, 0);
         else
             rigidBody.velocity = new Vector2(moveDirection.x * sprintSpeed, 0);
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.CompareTag("Chunk"))
+        {
+            mapController.UpdateCurrentChunk(collision.gameObject.GetComponent<ChunkProperties>().chunkProperties.Type);
+            mapController.CheckBackgroundChunk();
+        }
+    }
+
+    public void LoadData(GameData gameData)
+    {
+        this.transform.position = gameData.playerPosition;
+    }
+
+    public void SaveData(GameData gameData)
+    {
+        gameData.playerPosition = this.transform.position;
     }
 }
