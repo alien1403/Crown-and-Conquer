@@ -497,8 +497,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2602295193048958230}
   - component: {fileID: 8876748759940756030}
-  - component: {fileID: 1231071398513443098}
   - component: {fileID: 3467228171885814250}
+  - component: {fileID: -4747941671183975790}
   m_Layer: 6
   m_Name: Forest Floor Chunk 1
   m_TagString: Chunk
@@ -571,19 +571,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 14.4, y: 0.6}
   m_EdgeRadius: 0
---- !u!114 &1231071398513443098
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5327353830407151998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72b23fa8b350f124ea857e63128c191f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chunkProperties: {fileID: 11400000, guid: 7a02869f82907c74f94147e1ef1d5df3, type: 2}
 --- !u!114 &3467228171885814250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -607,6 +594,16 @@ MonoBehaviour:
   - {fileID: 4123987578244281035}
   - {fileID: 8269809358350806706}
   - {fileID: 271452347670285388}
+  - {fileID: 8520311029036059025}
+  - {fileID: 2854043937265895861}
+  - {fileID: 92108399034603365}
+  - {fileID: 5491621054547586076}
+  - {fileID: 4376711546722489841}
+  - {fileID: 2038015168989983535}
+  - {fileID: 1400180098403885352}
+  - {fileID: 3562148861662763680}
+  - {fileID: 6860946631796184640}
+  - {fileID: 8420060274514621752}
   propPrefabs:
   - gameObject: {fileID: 3230105699153300365, guid: a48c4bcbf5b7ad34e9704d3fc7128e2d, type: 3}
     probability: 15
@@ -642,6 +639,20 @@ MonoBehaviour:
     probability: 15
   - gameObject: {fileID: 5947061052039301025, guid: c0e035a8463a06348a526d6bd437aa47, type: 3}
     probability: 15
+--- !u!114 &-4747941671183975790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5327353830407151998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72b23fa8b350f124ea857e63128c191f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chunkProperties: {fileID: 11400000, guid: 7a02869f82907c74f94147e1ef1d5df3, type: 2}
+  chunkPrefabGUID: 58ed5f5b06fcdf54a91280a9cee7a56c
 --- !u!1 &5491621054547586076
 GameObject:
   m_ObjectHideFlags: 0

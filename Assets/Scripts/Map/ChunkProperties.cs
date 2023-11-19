@@ -1,40 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
-public enum ChunkType
-{
-    Forest,
-    Base,
-}
 [System.Serializable]
-public class ChunkProperties : MonoBehaviour, IDataPersistence
+public class ChunkProperties : MonoBehaviour
 {
-    public ChunkType Type;
-    public string Guid;
-    public List<string> propsGuids;
-    public Vector3 Position;
-    private void Awake()
+    public ChunkPropertiesScriptableObject chunkProperties;
+    public string chunkPrefabGUID;
+    public List<string> GetChunkPropPrefabsGUIDs()
     {
-        Guid = DataPersistenceManager.GetPrefabGUID(gameObject);
-        Transform propsParent = transform.Find("Props");
-        if(propsParent != null )
+        List<string> list = new List<string>();
+        Transform props = transform.GetChild(4);
+        if(props.name == "Props")
         {
-            for(int i = 0; i < propsParent.childCount; i++)
+            for (int i = 0; i < props.childCount; i++)
             {
-                propsGuids.Add(DataPersistenceManager.GetPrefabGUID(propsParent.GetChild(i).gameObject));
+                Transform propLocation = props.GetChild(i);
+                list.Add(propLocation.GetChild(0).GetComponent<PropProperties>().PrefabGUID);
             }
         }
-        Position = this.transform.position;
-    }
-    public void LoadData(GameData gameData)
-    {
-        
-    }
-
-    public void SaveData(ref GameData gameData)
-    {
-        gameData.chunkProperties.Add(this);
+        return list;
     }
 }

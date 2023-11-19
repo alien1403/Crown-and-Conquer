@@ -12,6 +12,9 @@ public class DataPersistenceManager : MonoBehaviour
     private GameData gameData;
     private List<IDataPersistence> dataPersistanceObjects;
     private FileDataHandler fileDataHandler;
+    public PrefabsDictionaryScriptableObject prefabsDictionary;
+    [SerializeField]
+    public bool useEncryption;
     public static DataPersistenceManager instance { get; private set; }
     private void Awake()
     {
@@ -23,13 +26,14 @@ public class DataPersistenceManager : MonoBehaviour
     }
     private void Start()
     {
-        this.fileDataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
+        this.fileDataHandler = new FileDataHandler(Application.persistentDataPath, fileName, useEncryption);
         this.dataPersistanceObjects = FindAllDataPersistanceObjects();
         LoadGame();
     }
     public void NewGame()
     {
         this.gameData = new GameData();
+        FindObjectOfType<MapController>().GenerateWorld();
     }
     public void LoadGame()
     {
@@ -48,7 +52,7 @@ public class DataPersistenceManager : MonoBehaviour
     {
         foreach (IDataPersistence dataPersistanceObject in dataPersistanceObjects)
         {
-            dataPersistanceObject.SaveData(ref gameData);
+            dataPersistanceObject.SaveData(gameData);
         }
         fileDataHandler.Save(gameData);
     }
@@ -62,16 +66,23 @@ public class DataPersistenceManager : MonoBehaviour
             .OfType<IDataPersistence>();
         return new List<IDataPersistence>(dataPersistanceObjects);
     }
-    public static string GetPrefabGUID(GameObject gameObject)
+    public string GetPrefabGUIDFromInstatiatedGameObject(GameObject instantiatedObject)
     {
-        string prefabPath = PrefabUtility.GetPrefabAssetPathOfNearestInstanceRoot(gameObject);
-
-        if (string.IsNullOrEmpty(prefabPath))
+        if(instantiatedObject != null)
         {
-            prefabPath = PrefabUtility.GetPrefabAssetPathOfNearestInstanceRoot(PrefabUtility.FindPrefabRoot(gameObject));
+            GameObject prefab = PrefabUtility.GetCorrespondingObjectFromSource(instantiatedObject);
+            Debug.Log(prefab == null);
+            if(prefabsDictionary.PrefabsGUID.ContainsKey(prefab))
+                return prefabsDictionary.PrefabsGUID[prefab];
         }
-        Debug.Log(prefabPath);
-        string guid = AssetDatabase.AssetPathToGUID(prefabPath);
-        return guid;
+        return string.Empty;
+    }
+    public GameObject GetPrefabFromGUID(string guid)
+    {
+        if(prefabsDictionary.GUIDPrefabs.ContainsKey(guid))
+        {
+            return prefabsDictionary.GUIDPrefabs[guid];
+        }
+        return null;
     }
 }

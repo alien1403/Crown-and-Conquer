@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 2602295193048958230}
   - component: {fileID: 8876748759940756030}
   - component: {fileID: 2910601341746401879}
-  - component: {fileID: 7356033744077751811}
+  - component: {fileID: 6291584551266567878}
   m_Layer: 6
   m_Name: Base Floor Chunk
   m_TagString: Chunk
@@ -291,7 +291,7 @@ MonoBehaviour:
     probability: 1
   - gameObject: {fileID: 2133158117692628267, guid: 8b2db8efc75f0dc4c981874e354597a7, type: 3}
     probability: 1
---- !u!114 &7356033744077751811
+--- !u!114 &6291584551266567878
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -303,10 +303,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72b23fa8b350f124ea857e63128c191f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 1
-  Guid: 
-  propsGuids: []
-  Position: {x: 0, y: 0, z: 0}
+  chunkProperties: {fileID: 11400000, guid: 4ca153809562b8a408e36368523cf058, type: 2}
+  chunkPrefabGUID: 2a80a569c957f1f4ca4375e64d9cadc8
 --- !u!1 &6080655905104307793
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,14 +9,14 @@ public class PropRandomizer : MonoBehaviour
     public List<GameObjectProbability> propPrefabs;
     void Start()
     {
-        SpawnProps();
+
     }
 
     void Update()
     {
         
     }
-    void SpawnProps()
+    public void SpawnProps()
     {
         GameObjectProbability.NormalizeProbabilities(ref propPrefabs);
 
@@ -28,6 +28,18 @@ public class PropRandomizer : MonoBehaviour
             float offset = prefabHeight / 2f;
             spawnedProp = Instantiate(spawnedProp, Vector3.zero, Quaternion.identity);
             spawnedProp.transform.parent = spawnPoint.transform;
+            spawnedProp.transform.localPosition = new Vector3(0, offset, 0);
+        }
+    }
+    public void SpawnPropsFromList(List<string> propsGUIDs, DataPersistenceManager manager)
+    {
+        for(int i = 0; i < propSpawnPoints.Count; i++)
+        {
+            GameObject propPrefab = manager.GetPrefabFromGUID(propsGUIDs[i]);
+            GameObject spawnedProp = Instantiate(propPrefab, Vector3.zero, Quaternion.identity);
+            float prefabHeight = spawnedProp.GetComponent<Renderer>().bounds.size.y;
+            float offset = prefabHeight / 2f;
+            spawnedProp.transform.parent = propSpawnPoints[i].transform;
             spawnedProp.transform.localPosition = new Vector3(0, offset, 0);
         }
     }

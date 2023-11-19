@@ -7,5 +7,7 @@ using UnityEngine;
 public class PrefabsDictionaryScriptableObject : ScriptableObject
 {
     [SerializedDictionary]
-    public SerializedDictionary<string, GameObject> prefabs;
+    public SerializedDictionary<string, GameObject> GUIDPrefabs;
+    [SerializedDictionary]
+    public SerializedDictionary<GameObject, string> PrefabsGUID;
 }

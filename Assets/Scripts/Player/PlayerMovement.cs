@@ -131,7 +131,7 @@ public class PlayerMovement : MonoBehaviour, IDataPersistence
     {
         if(collision.gameObject.CompareTag("Chunk"))
         {
-            mapController.UpdateCurrentChunk(collision.gameObject.GetComponent<ChunkProperties>().Type);
+            mapController.UpdateCurrentChunk(collision.gameObject.GetComponent<ChunkProperties>().chunkProperties.Type);
             mapController.CheckBackgroundChunk();
         }
     }
@@ -141,7 +141,7 @@ public class PlayerMovement : MonoBehaviour, IDataPersistence
         this.transform.position = gameData.playerPosition;
     }
 
-    public void SaveData(ref GameData gameData)
+    public void SaveData(GameData gameData)
     {
         gameData.playerPosition = this.transform.position;
     }

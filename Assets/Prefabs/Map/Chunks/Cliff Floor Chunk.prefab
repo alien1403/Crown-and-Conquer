@@ -1,5 +1,37 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1427226160689450391
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1203338557862050139}
+  m_Layer: 6
+  m_Name: Props
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1203338557862050139
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1427226160689450391}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6884067913806993048}
+  m_Father: {fileID: 2602295193048958230}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1861532208360476919
 GameObject:
   m_ObjectHideFlags: 0
@@ -84,6 +116,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2093933383506529841
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6884067913806993048}
+  m_Layer: 6
+  m_Name: Prop Location 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6884067913806993048
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093933383506529841}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.84, y: 0.16, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1203338557862050139}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2421496689609512594
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,6 +321,7 @@ GameObject:
   - component: {fileID: 2602295193048958230}
   - component: {fileID: 8876748759940756030}
   - component: {fileID: 1299488699980563505}
+  - component: {fileID: 8870289718073803304}
   m_Layer: 6
   m_Name: Cliff Floor Chunk
   m_TagString: Chunk
@@ -282,6 +346,7 @@ Transform:
   - {fileID: 954017523470086638}
   - {fileID: 3727524805773960021}
   - {fileID: 1620383917233720872}
+  - {fileID: 1203338557862050139}
   - {fileID: 2566005960929213916}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -342,7 +407,65 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72b23fa8b350f124ea857e63128c191f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 1
+  chunkProperties: {fileID: 11400000, guid: 4ca153809562b8a408e36368523cf058, type: 2}
+  chunkPrefabGUID: ad54329814951fc4b9309a90cec96b53
+--- !u!114 &8870289718073803304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5327353830407151998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57a6cbc4426188b4f93b73d965608e23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  propSpawnPoints:
+  - {fileID: 2093933383506529841}
+  propPrefabs:
+  - gameObject: {fileID: 7660784549292791258, guid: adefd233af00d054ba48e2e4632f769c, type: 3}
+    probability: 1
+  - gameObject: {fileID: 1250268065716278422, guid: 55c700afbd48b914b91602a449655ca4, type: 3}
+    probability: 1
+  - gameObject: {fileID: 7918636734748091000, guid: f057f8103c6589d4a9ef48b5a4d5f792, type: 3}
+    probability: 1
+  - gameObject: {fileID: 7530400706877726440, guid: d19e9f0128cab9e44b6b894175b3219d, type: 3}
+    probability: 1
+  - gameObject: {fileID: 2685412748028295547, guid: 608c6cd727d602f4db199db060e89d9c, type: 3}
+    probability: 1
+  - gameObject: {fileID: 6810381133054586204, guid: e39e48f647581dc4cb94851c0cec4f63, type: 3}
+    probability: 1
+  - gameObject: {fileID: 7725543090292664237, guid: 2c062fd6c667be94b9946efc026d02cb, type: 3}
+    probability: 1
+  - gameObject: {fileID: 7061891737327261229, guid: 77d9ceb842f74b34c8d4fcd039cfc2cb, type: 3}
+    probability: 1
+  - gameObject: {fileID: 1015173050136504073, guid: 2cad8976544a15d4795fdc6ed9629871, type: 3}
+    probability: 1
+  - gameObject: {fileID: 6722170026963824067, guid: fc908777319379a4591a6b2e30478c53, type: 3}
+    probability: 1
+  - gameObject: {fileID: 5603447871675015803, guid: 104ecc78ece823d40b2c3aa6cb721438, type: 3}
+    probability: 1
+  - gameObject: {fileID: 3920451969238760081, guid: b849261fe02e88147a5c49220fce9826, type: 3}
+    probability: 1
+  - gameObject: {fileID: 2034996538370915385, guid: 1b2a0fff22602cf4199420867818f5de, type: 3}
+    probability: 1
+  - gameObject: {fileID: 3194590434711995783, guid: 237a03053570e7b499f99fd080150aea, type: 3}
+    probability: 1
+  - gameObject: {fileID: 3516660495207121891, guid: fcfa8f95d0eec9748ad780e0ec040388, type: 3}
+    probability: 1
+  - gameObject: {fileID: 4386497051161006105, guid: e4dfe604380f4a9449b15e317387a75a, type: 3}
+    probability: 1
+  - gameObject: {fileID: 3484492598241422358, guid: 51bc3ba562ba22e4bbd80680303fff97, type: 3}
+    probability: 1
+  - gameObject: {fileID: 3520224548435470367, guid: c7e412e48c539484db69cac9a6ab195b, type: 3}
+    probability: 1
+  - gameObject: {fileID: 1473539327896014776, guid: 157a2f4f8726533409249a0b2f619139, type: 3}
+    probability: 1
+  - gameObject: {fileID: 3686332343516033801, guid: 1abec0b0d07e6da498df320ad3c19cdb, type: 3}
+    probability: 1
+  - gameObject: {fileID: 2133158117692628267, guid: 8b2db8efc75f0dc4c981874e354597a7, type: 3}
+    probability: 1
 --- !u!1 &6003945461438809655
 GameObject:
   m_ObjectHideFlags: 0

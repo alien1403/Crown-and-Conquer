@@ -24,7 +24,8 @@ public class PrefabManager : EditorWindow
 
             if (prefab != null)
             {
-                prefabDictionary.prefabs.Add(guid, prefab);
+                prefabDictionary.GUIDPrefabs.Add(guid, prefab);
+                prefabDictionary.PrefabsGUID.Add(prefab, guid);
             }
         }
         EditorUtility.SetDirty(prefabDictionary); // Mark the ScriptableObject as dirty to prompt saving
