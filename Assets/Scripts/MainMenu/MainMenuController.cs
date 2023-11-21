@@ -27,17 +27,4 @@ public class MainMenuController : MonoBehaviour
     {
         Application.Quit();
     }
-
-    public void NewGame()
-    {
-        SceneManager.LoadScene("SampleScene");
-        DataPersistenceManager.instance.DeleteSavedData();
-        DataPersistenceManager.instance.NewGame();
-    }
-
-    public void Continue()
-    {
-        SceneManager.LoadScene("SampleScene");
-        DataPersistenceManager.instance.LoadGame();
-    }
 }
