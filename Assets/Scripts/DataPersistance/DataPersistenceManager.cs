@@ -85,11 +85,4 @@ public class DataPersistenceManager : MonoBehaviour
         }
         return null;
     }
-
-    public void DeleteSavedData()
-    {
-        fileDataHandler.DeleteSavedData();
-    }
-
-    
 }
