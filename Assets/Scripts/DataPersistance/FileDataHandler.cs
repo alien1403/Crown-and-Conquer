@@ -77,4 +77,21 @@ public class FileDataHandler
         }
         return modifiedData;
     }
+
+    public void DeleteSavedData()
+    {
+        string filePath = Path.Combine(dataDirectoryPath, dataFileName);
+        if(File.Exists(filePath))
+        {
+            try
+            {
+                File.Delete(filePath);
+                Debug.Log("Deleted the file");
+            }
+            catch(Exception e)
+            {
+                Debug.LogError("Error deleting the file: " + e);
+            }
+        }
+    }
 }
