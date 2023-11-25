@@ -2617,6 +2617,7 @@ GameObject:
   - component: {fileID: 1089518121}
   - component: {fileID: 1089518123}
   - component: {fileID: 1089518124}
+  - component: {fileID: 1089518125}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2857,6 +2858,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.58, y: 1.13}
   m_EdgeRadius: 0
+--- !u!114 &1089518125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1089518116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80692294484fffb419a30540bc8e891e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goldCounter: 0
+  woodCounter: 0
+  stoneCounter: 0
+  ironCounter: 0
+  goldCounterText: {fileID: 904834933}
+  woodCounterText: {fileID: 1241640017}
+  stoneCounterText: {fileID: 499599629}
+  ironCounterText: {fileID: 453095692}
 --- !u!1 &1160589344
 GameObject:
   m_ObjectHideFlags: 0
@@ -5470,4 +5491,3 @@ SceneRoots:
   - {fileID: 1160589346}
   - {fileID: 1401034745}
   - {fileID: 1863450528}
-  
