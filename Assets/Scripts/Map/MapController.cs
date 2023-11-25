@@ -184,6 +184,7 @@ public class MapController : MonoBehaviour, IDataPersistence
         foreach (ChunkPropertiesUtils chunkProperties in gameData.chunks)
         {
             GameObject newChunk = Instantiate(dataPersistanceManager.GetPrefabFromGUID(chunkProperties.chunkGUID), chunkProperties.position, Quaternion.identity);
+            newChunk.transform.parent = parentObject.transform;
             newChunk.GetComponent<PropRandomizer>().SpawnPropsFromList(chunkProperties.propsGUIDs, dataPersistanceManager);
             spawnedChunks.Add(newChunk);
         }
