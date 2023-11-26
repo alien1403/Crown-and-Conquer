@@ -46,10 +46,9 @@ public class MapController : MonoBehaviour, IDataPersistence
     public int MaxLeftIntermediaryChunks;
     public int MaxRightIntermediaryChunks;
 
-    [HideInInspector]
-    public float leftMostX;
-    [HideInInspector]
-    public float rightMostX;
+    private float leftMostX;
+    private float rightMostX;
+
     void Start()
     {
         playerMovement = FindObjectOfType<PlayerMovement>();
@@ -65,7 +64,7 @@ public class MapController : MonoBehaviour, IDataPersistence
                 parallax.camera = CameraTarget;
             }
         }
-       
+        
     }
 
     void Update()
@@ -150,8 +149,13 @@ public class MapController : MonoBehaviour, IDataPersistence
         GenerateArea("Left", ref lastChunk, SecondLeftForestChunks, forestChunks);
         GenerateArea("Left", ref lastChunk, 1, baseChunks);
         GenerateArea("Left", ref lastChunk, 1, marginChunks);
+        Camera camera = GameObject.Find("Main Camera").GetComponent<Camera>();
+        float mainCameraHalfHeight;
+        float mainCameraHalfWidth;
+        mainCameraHalfHeight = camera.orthographicSize;
+        mainCameraHalfWidth = mainCameraHalfHeight * camera.aspect;
         float spriteWidth = lastChunk.transform.Find("Floor").GetComponent<SpriteRenderer>().bounds.size.x;
-        leftMostX = lastChunk.transform.position.x - spriteWidth / 2;
+        leftMostX = lastChunk.transform.position.x - spriteWidth / 2 + mainCameraHalfWidth;
         lastChunk = currentChunk;
         GenerateArea("Right", ref lastChunk, RightBaseChunks, baseChunks);
         GenerateArea("Right", ref lastChunk, FirstRightForestChunks, forestChunks);
@@ -160,7 +164,13 @@ public class MapController : MonoBehaviour, IDataPersistence
         GenerateArea("Right", ref lastChunk, 1, baseChunks);
         GenerateArea("Right", ref lastChunk, 1, marginChunks);
         lastChunk.transform.localScale = new Vector3(-lastChunk.transform.localScale.x, lastChunk.transform.localScale.y, lastChunk.transform.localScale.z);
-        rightMostX = lastChunk.transform.position.x + spriteWidth / 2;
+        rightMostX = lastChunk.transform.position.x + spriteWidth / 2 - mainCameraHalfWidth;
+        CameraMovement cameraMov = GameObject.Find("Main Camera").GetComponent<CameraMovement>();
+        cameraMov.leftBound = leftMostX;
+        cameraMov.rightBound = rightMostX;
+        cameraMov = GameObject.Find("Camera").GetComponent<CameraMovement>();
+        cameraMov.leftBound = leftMostX;
+        cameraMov.rightBound = rightMostX;
     }
     void GenerateArea(string staticPoint,ref GameObject lastChunk, int nrChunks, List<GameObject> chunkPool) 
     {
@@ -191,6 +201,17 @@ public class MapController : MonoBehaviour, IDataPersistence
         currentChunk = spawnedChunks[gameData.CurrentChunkIndex];
         currentChunkType = currentChunk.GetComponent<ChunkProperties>().chunkProperties.Type;
         previousChunkType = currentChunkType;
+        if(gameData.LeftBoundary != 0)  // if they are initialized from previous save
+        {
+            leftMostX = gameData.LeftBoundary;
+            rightMostX = gameData.RightBoundary;
+        }
+        CameraMovement cameraMov = GameObject.Find("Main Camera").GetComponent<CameraMovement>();
+        cameraMov.leftBound = leftMostX;
+        cameraMov.rightBound = rightMostX;
+        cameraMov = GameObject.Find("Camera").GetComponent<CameraMovement>();
+        cameraMov.leftBound = leftMostX;
+        cameraMov.rightBound = rightMostX;
     }
 
     public void SaveData(GameData gameData)
@@ -208,5 +229,7 @@ public class MapController : MonoBehaviour, IDataPersistence
                 });
             }
         }
+        gameData.LeftBoundary = leftMostX;
+        gameData.RightBoundary = rightMostX;
     }
 }
