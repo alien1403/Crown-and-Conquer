@@ -195,6 +195,8 @@ public class MapController : MonoBehaviour, IDataPersistence
         {
             GameObject newChunk = Instantiate(dataPersistanceManager.GetPrefabFromGUID(chunkProperties.chunkGUID), chunkProperties.position, Quaternion.identity);
             newChunk.transform.parent = parentObject.transform;
+            if(chunkProperties.flipX < 0)
+                newChunk.transform.localScale = new Vector3(-newChunk.transform.localScale.x, newChunk.transform.localScale.y, newChunk.transform.localScale.z);
             newChunk.GetComponent<PropRandomizer>().SpawnPropsFromList(chunkProperties.propsGUIDs, dataPersistanceManager);
             spawnedChunks.Add(newChunk);
         }
@@ -225,7 +227,8 @@ public class MapController : MonoBehaviour, IDataPersistence
                 {
                     position = chunk.transform.position,
                     chunkGUID = chunkProp.chunkPrefabGUID,
-                    propsGUIDs = chunkProp.GetChunkPropPrefabsGUIDs()
+                    propsGUIDs = chunkProp.GetChunkPropPrefabsGUIDs(),
+                    flipX = chunk.transform.localScale.x > 0 ? 1 : -1
                 });
             }
         }

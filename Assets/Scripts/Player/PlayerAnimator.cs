@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class PlayerAnimator : MonoBehaviour
+public class PlayerAnimator : MonoBehaviour, IDataPersistence
 {
     Animator animator;
     PlayerMovement playerMovement;
     SpriteRenderer spriteRenderer;
+    bool flipX;
     void Start()
     {
         animator = GetComponent<Animator>();
         playerMovement = GetComponent<PlayerMovement>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.flipX = flipX;
     }
 
     void Update()
@@ -54,5 +56,15 @@ public class PlayerAnimator : MonoBehaviour
     public void SetSprint(bool value)
     {
         animator.SetBool("Sprint", value);
+    }
+
+    public void LoadData(GameData gameData)
+    {
+        flipX = gameData.playerFlip;
+    }
+
+    public void SaveData(GameData gameData)
+    {
+        gameData.playerFlip = spriteRenderer.flipX;
     }
 }

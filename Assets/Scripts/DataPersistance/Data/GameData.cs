@@ -13,6 +13,7 @@ public class GameData
     public int StoneCounter;
     public int IronCounter;
     public Vector3 playerPosition;
+    public bool playerFlip;
 
     // Map variables
     public List<ChunkPropertiesUtils> chunks = new List<ChunkPropertiesUtils>();
@@ -27,6 +28,7 @@ public class GameData
     public GameData()
     {
         playerPosition = new Vector3(0f, -1f, 0f);
+        playerFlip = false;
         DayCount = 1;
         Hour = 2;
         Minute = 30;
