@@ -1438,6 +1438,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1089518120}
   offset: {x: 0, y: 1, z: -10}
+  leftBound: -2.1474836e+9
+  rightBound: 2.1474836e+9
 --- !u!114 &519420034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4759,6 +4761,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1089518120}
   offset: {x: 0, y: 2.5, z: -10}
+  leftBound: -2.1474836e+9
+  rightBound: 2.1474836e+9
 --- !u!1 &1765311608
 GameObject:
   m_ObjectHideFlags: 0
@@ -5688,8 +5692,8 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
-  - {fileID: 1089518120}
   - {fileID: 1863773401}
+  - {fileID: 1089518120}
   - {fileID: 1044996216}
   - {fileID: 1329445144}
   - {fileID: 1759583419}
