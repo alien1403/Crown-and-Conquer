@@ -8,4 +8,5 @@ public class ChunkPropertiesUtils
     public Vector3 position;
     public string chunkGUID;
     public List<string> propsGUIDs;
+    public int flipX;
 }
