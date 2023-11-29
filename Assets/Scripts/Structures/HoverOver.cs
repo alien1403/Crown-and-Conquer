@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -13,13 +14,31 @@ public class HoverOver : MonoBehaviour
     private bool isHovered = false;
     private Color originalColor;
     private SpriteRenderer spriteRenderer;
+    [AllowNull]
+    public GameObject UpgradePanel;
+    public GameObject[] buildingLevels;
+    public int nextLevel = 1;
+    public GameObject UpgradeEffect; 
+
+
 
     void Start()
     {
         // Store the original scale and color of the object
         originalScale = transform.localScale;
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        originalColor = spriteRenderer.color;
+
+        if (buildingLevels.Length == 0)
+        {
+            spriteRenderer = GetComponent<SpriteRenderer>();
+            originalColor = spriteRenderer.color;
+        }
+        else
+        {
+            spriteRenderer = buildingLevels[0].GetComponent<SpriteRenderer>();
+            originalColor = spriteRenderer.color;
+        }
+
+    
     }
 
     void Update()
@@ -36,14 +55,48 @@ public class HoverOver : MonoBehaviour
     void OnMouseEnter()
     {
         // Set the flag to indicate that the mouse is hovering
-        isHovered = true;
+        if (nextLevel <= 3)
+        {
+            isHovered = true;
+            UpgradePanel.SetActive(true);
+        }
     }
 
     void OnMouseExit()
     {
         // Set the flag to indicate that the mouse is not hovering
         isHovered = false;
+        UpgradePanel.SetActive(false); 
     }
+
+    void OnMouseDown()
+    {
+        StartCoroutine(UpgradeWithEffect());
+      
+    }
+
+    IEnumerator UpgradeWithEffect()
+    {
+        if (nextLevel <= 3)
+        {
+            Instantiate(UpgradeEffect, transform.position + new Vector3(0.4f, 0f, 0f), Quaternion.identity);
+
+            yield return new WaitForSeconds(0.5f); // Adjust the delay time as needed
+
+            buildingLevels[nextLevel - 1].SetActive(false);
+            buildingLevels[nextLevel].SetActive(true);
+
+            if (buildingLevels.Length != 0)
+            {
+                spriteRenderer = buildingLevels[nextLevel].GetComponent<SpriteRenderer>();
+                originalColor = spriteRenderer.color;
+            }
+
+            nextLevel++;
+
+        }
+    }
+
 }
 
    
