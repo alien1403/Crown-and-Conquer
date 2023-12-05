@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -5,7 +6,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 
-public class HoverOver : MonoBehaviour
+public class BuildingController : MonoBehaviour
 {
     public float hoverScaleFactor = 1.1f; // Adjust this value to control the scale factor on hover
     public float scaleSpeed = 2f; // Adjust this value to control the speed of the scaling transition
@@ -14,11 +15,12 @@ public class HoverOver : MonoBehaviour
     private bool isHovered = false;
     private Color originalColor;
     private SpriteRenderer spriteRenderer;
-    [AllowNull]
-    public GameObject UpgradePanel;
+    public GameObject upgradePanel;
     public GameObject[] buildingLevels;
     public int nextLevel = 1;
-    public GameObject UpgradeEffect; 
+    public GameObject upgradeEffect;
+    [SerializeField]
+    private int maxLevel;
 
 
 
@@ -38,7 +40,6 @@ public class HoverOver : MonoBehaviour
             originalColor = spriteRenderer.color;
         }
 
-    
     }
 
     void Update()
@@ -55,10 +56,10 @@ public class HoverOver : MonoBehaviour
     void OnMouseEnter()
     {
         // Set the flag to indicate that the mouse is hovering
-        if (nextLevel <= 3)
+        if (nextLevel <= maxLevel)
         {
             isHovered = true;
-            UpgradePanel.SetActive(true);
+            upgradePanel.SetActive(true);
         }
     }
 
@@ -66,20 +67,23 @@ public class HoverOver : MonoBehaviour
     {
         // Set the flag to indicate that the mouse is not hovering
         isHovered = false;
-        UpgradePanel.SetActive(false); 
+        upgradePanel.SetActive(false); 
     }
 
     void OnMouseDown()
     {
-        StartCoroutine(UpgradeWithEffect());
+        if (upgradeEffect != null)
+        {
+            StartCoroutine(UpgradeWithEffect());
+        }
       
     }
 
     IEnumerator UpgradeWithEffect()
     {
-        if (nextLevel <= 3)
+        if (nextLevel <= maxLevel)
         {
-            Instantiate(UpgradeEffect, transform.position + new Vector3(0.4f, 0f, 0f), Quaternion.identity);
+            Instantiate(upgradeEffect, transform.position + new Vector3(0.4f, 0f, 0f), Quaternion.identity);
 
             yield return new WaitForSeconds(0.5f); // Adjust the delay time as needed
 
