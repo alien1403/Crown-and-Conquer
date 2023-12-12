@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 
-public class BuildingController : MonoBehaviour
+public class TownHallController : MonoBehaviour
 {
     public float hoverScaleFactor = 1.1f; 
     public float scaleSpeed = 2f; 
@@ -26,6 +26,7 @@ public class BuildingController : MonoBehaviour
 
     void Start()
     {
+        TownHallDictator.townHallLevel = 0;
         inventoryManager = FindObjectOfType<InventoryManager>();
 
         originalScale = transform.localScale;
@@ -57,7 +58,7 @@ public class BuildingController : MonoBehaviour
     void OnMouseEnter()
     {
         // flag for hovering
-        if (nextLevelCost != null && nextLevel - 1 < TownHallDictator.townHallLevel)
+        if (nextLevelCost != null)
         {
             isHovered = true;
             upgradePanel.SetActive(true);
@@ -66,18 +67,18 @@ public class BuildingController : MonoBehaviour
 
     void OnMouseExit()
     {
-        // flag for hovering
+        // flag for hoveringv
         isHovered = false;
-        upgradePanel.SetActive(false); 
+        upgradePanel.SetActive(false);
     }
 
     void OnMouseDown()
     {
         isHovered = false;
         upgradePanel.SetActive(false);
-       
+
         // upgrade cost logic
-        if ( nextLevelCost == null ||
+        if (nextLevelCost == null ||
             nextLevelCost.CoinCost > inventoryManager.goldCounter ||
             nextLevelCost.WoodCost > inventoryManager.woodCounter ||
             nextLevelCost.StoneCost > inventoryManager.stoneCounter ||
@@ -85,17 +86,17 @@ public class BuildingController : MonoBehaviour
         {
             return;
         }
-        else 
+        else
         {
             inventoryManager.goldCounter -= nextLevelCost.CoinCost;
             inventoryManager.woodCounter -= nextLevelCost.WoodCost;
             inventoryManager.stoneCounter -= nextLevelCost.StoneCost;
             inventoryManager.ironCounter -= nextLevelCost.IronCost;
-            
+
             inventoryManager.HandleInventoryChange();
         }
 
-        if (upgradeEffect != null && nextLevel - 1 < TownHallDictator.townHallLevel)
+        if (upgradeEffect != null)
         {
             nextLevelCost = nextLevelCost.nextLevel;
             StartCoroutine(UpgradeWithEffect());
@@ -121,11 +122,11 @@ public class BuildingController : MonoBehaviour
             }
 
             nextLevel++;
-
+            TownHallDictator.townHallLevel++;
         }
     }
 
 }
 
-   
+
 
