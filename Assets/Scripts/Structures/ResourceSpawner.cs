@@ -22,7 +22,6 @@ public class ResourceSpawner : MonoBehaviour
 
     void Update()
     {
-        buildingController = GetComponent<BuildingController>();
         if (buildingController.nextLevel > 1)
         {
             timer += Time.deltaTime;

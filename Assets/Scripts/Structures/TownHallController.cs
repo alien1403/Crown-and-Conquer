@@ -6,53 +6,19 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 
-public class TownHallController : MonoBehaviour
+public class TownHallController : BuildingController
 {
-    public float hoverScaleFactor = 1.1f; 
-    public float scaleSpeed = 2f; 
-    public Color hoverTintColor = new Color(1f, 1f, 1f, 0.5f); 
-    private Vector3 originalScale;
-    private bool isHovered = false;
-    private Color originalColor;
-    private SpriteRenderer spriteRenderer;
-    public GameObject upgradePanel;
-    public GameObject[] buildingLevels;
-    public int nextLevel = 1;
-    public GameObject upgradeEffect;
-    [SerializeField]
-    private int maxLevel;
-    public BuildingScriptableObject nextLevelCost;
-    private InventoryManager inventoryManager;
 
     void Start()
     {
         TownHallDictator.townHallLevel = 0;
-        inventoryManager = FindObjectOfType<InventoryManager>();
-
-        originalScale = transform.localScale;
-
-        if (buildingLevels.Length == 0)
-        {
-            spriteRenderer = GetComponent<SpriteRenderer>();
-            originalColor = spriteRenderer.color;
-        }
-        else
-        {
-            spriteRenderer = buildingLevels[0].GetComponent<SpriteRenderer>();
-            originalColor = spriteRenderer.color;
-        }
+        base.Start();
 
     }
 
     void Update()
     {
-        // increase in scale
-        float targetScale = isHovered ? hoverScaleFactor : 1.0f;
-        transform.localScale = Vector3.Lerp(transform.localScale, originalScale * targetScale, Time.deltaTime * scaleSpeed);
-
-        // red color change
-        Color targetColor = isHovered ? hoverTintColor : originalColor;
-        spriteRenderer.color = Color.Lerp(spriteRenderer.color, targetColor, Time.deltaTime * scaleSpeed);
+        base.Update();
     }
 
     void OnMouseEnter()
@@ -67,16 +33,11 @@ public class TownHallController : MonoBehaviour
 
     void OnMouseExit()
     {
-        // flag for hoveringv
-        isHovered = false;
-        upgradePanel.SetActive(false);
+        base.OnMouseExit();
     }
 
     void OnMouseDown()
     {
-        isHovered = false;
-        upgradePanel.SetActive(false);
-
         // upgrade cost logic
         if (nextLevelCost == null ||
             nextLevelCost.CoinCost > inventoryManager.goldCounter ||
@@ -96,12 +57,14 @@ public class TownHallController : MonoBehaviour
             inventoryManager.HandleInventoryChange();
         }
 
-        if (upgradeEffect != null)
+        if (upgradeEffect != null && isHovered == true && upgradePanel.activeSelf == true)
         {
             nextLevelCost = nextLevelCost.nextLevel;
             StartCoroutine(UpgradeWithEffect());
         }
 
+        isHovered = false;
+        upgradePanel.SetActive(false);
     }
 
     IEnumerator UpgradeWithEffect()

@@ -11,20 +11,20 @@ public class BuildingController : MonoBehaviour
     public float hoverScaleFactor = 1.1f; 
     public float scaleSpeed = 2f; 
     public Color hoverTintColor = new Color(1f, 1f, 1f, 0.5f); 
-    private Vector3 originalScale;
-    private bool isHovered = false;
-    private Color originalColor;
-    private SpriteRenderer spriteRenderer;
+    protected Vector3 originalScale;
+    protected bool isHovered = false;
+    protected Color originalColor;
+    protected SpriteRenderer spriteRenderer;
     public GameObject upgradePanel;
     public GameObject[] buildingLevels;
     public int nextLevel = 1;
     public GameObject upgradeEffect;
     [SerializeField]
-    private int maxLevel;
+    protected int maxLevel;
     public BuildingScriptableObject nextLevelCost;
-    private InventoryManager inventoryManager;
+    protected InventoryManager inventoryManager;
 
-    void Start()
+    protected void Start()
     {
         inventoryManager = FindObjectOfType<InventoryManager>();
 
@@ -43,7 +43,7 @@ public class BuildingController : MonoBehaviour
 
     }
 
-    void Update()
+    protected void Update()
     {
         // increase in scale
         float targetScale = isHovered ? hoverScaleFactor : 1.0f;
@@ -64,7 +64,7 @@ public class BuildingController : MonoBehaviour
         }
     }
 
-    void OnMouseExit()
+    protected void OnMouseExit()
     {
         // flag for hovering
         isHovered = false;
@@ -73,8 +73,6 @@ public class BuildingController : MonoBehaviour
 
     void OnMouseDown()
     {
-        isHovered = false;
-        upgradePanel.SetActive(false);
        
         // upgrade cost logic
         if ( nextLevelCost == null ||
@@ -95,11 +93,14 @@ public class BuildingController : MonoBehaviour
             inventoryManager.HandleInventoryChange();
         }
 
-        if (upgradeEffect != null && nextLevel - 1 < TownHallDictator.townHallLevel)
+        if (upgradeEffect != null && nextLevel - 1 < TownHallDictator.townHallLevel && isHovered == true && upgradePanel.activeSelf == true)
         {
             nextLevelCost = nextLevelCost.nextLevel;
             StartCoroutine(UpgradeWithEffect());
         }
+
+        isHovered = false;
+        upgradePanel.SetActive(false);
 
     }
 
@@ -109,7 +110,7 @@ public class BuildingController : MonoBehaviour
         {
             Instantiate(upgradeEffect, transform.position + new Vector3(0.4f, 0f, 0f), Quaternion.identity);
 
-            yield return new WaitForSeconds(0.1f); 
+            yield return new WaitForSeconds(0.5f); 
 
             buildingLevels[nextLevel - 1].SetActive(false);
             buildingLevels[nextLevel].SetActive(true);
