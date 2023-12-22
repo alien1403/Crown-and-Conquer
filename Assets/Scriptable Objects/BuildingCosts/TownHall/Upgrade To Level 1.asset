@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f23d2e6af61db654fb602cf3da7badd2, type: 3}
+  m_Name: Upgrade To Level 1
+  m_EditorClassIdentifier: 
+  CoinCost: 3
+  WoodCost: 4
+  StoneCost: 0
+  IronCost: 0
+  nextLevel: {fileID: 11400000, guid: 3c1d6fa83383f974080008680e942733, type: 2}
