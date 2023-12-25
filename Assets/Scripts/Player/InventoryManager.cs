@@ -37,7 +37,7 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
         gameData.StoneCounter = stoneCounter;
         gameData.IronCounter = ironCounter;
     }
-    void HandleInventoryChange()
+    public void HandleInventoryChange()
     {
         goldCounterText.text = goldCounter.ToString();
         woodCounterText.text = woodCounter.ToString();
