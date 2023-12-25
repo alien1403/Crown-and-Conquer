@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Chunk
   - Selectable
+  - TreeTrunk
   layers:
   - Default
   - TransparentFX
