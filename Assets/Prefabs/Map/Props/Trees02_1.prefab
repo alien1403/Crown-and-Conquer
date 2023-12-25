@@ -95,6 +95,9 @@ GameObject:
   - component: {fileID: 5465282564126198580}
   - component: {fileID: -7785263450234146069}
   - component: {fileID: -8652368924161127446}
+  - component: {fileID: -3091933665364930594}
+  - component: {fileID: 526519797402794514}
+  - component: {fileID: 6755936338694712093}
   m_Layer: 0
   m_Name: Trees02_1
   m_TagString: Untagged
@@ -184,6 +187,77 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PrefabGUID: 11c04b374b5db6e4299ae9bfb14e1d8d
+--- !u!114 &-3091933665364930594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5176501017007774082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ae0f10ca9b6efc488232ca393e19afb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resourceToSpawn: {fileID: 9169016025696580041, guid: 2815285ef6f7f7e42a7062798ee2484d, type: 3}
+--- !u!61 &526519797402794514
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5176501017007774082}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.008600056, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.79, y: 3.49}
+    newSize: {x: 1.79, y: 3.49}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8955966, y: 3.49}
+  m_EdgeRadius: 0
+--- !u!114 &6755936338694712093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5176501017007774082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c09cf8e615c18974da5d85ca6f190a0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startWoodAmount: 6
 --- !u!1 &6732795932301803771
 GameObject:
   m_ObjectHideFlags: 0
