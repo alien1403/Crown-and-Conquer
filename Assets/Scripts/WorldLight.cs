@@ -12,6 +12,11 @@ public class WorldLight : MonoBehaviour
     private WorldTime _worldTime;
     [SerializeField]
     private Gradient _gradient;
+    [SerializeField]
+    private Gradient _gradientRedNight;
+    public WorldTime worldTime;
+
+    public EnemyController enemyController;
     private void Awake()
     {
         _light = GetComponent<Light2D>();
@@ -19,7 +24,21 @@ public class WorldLight : MonoBehaviour
     }
     private void OnWorldTimeChanged(object sender, TimeSpan newTime)
     {
-       _light.color = _gradient.Evaluate(PercentOfDay(newTime));
+        if(worldTime.dayCount % 10 != 0)
+        {
+            enemyController.canSpawnEnemies = true;
+            _light.color = _gradient.Evaluate(PercentOfDay(newTime));
+            enemyController.spawnRate = 5.0f;
+        }
+        else if(worldTime.dayCount % 10 == 1 && worldTime.dayCount != 1){
+           enemyController.canSpawnEnemies = false;
+        }
+        else
+        {
+            enemyController.canSpawnEnemies = true;
+            _light.color = _gradientRedNight.Evaluate(PercentOfDay(newTime));
+            enemyController.spawnRate = 1.0f;
+        }
     }
     private float PercentOfDay(TimeSpan timeSpan)
     {
