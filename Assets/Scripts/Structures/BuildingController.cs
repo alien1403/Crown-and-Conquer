@@ -74,27 +74,27 @@ public class BuildingController : MonoBehaviour
     void OnMouseDown()
     {
        
-        // upgrade cost logic
-        if ( nextLevelCost == null ||
-            nextLevelCost.CoinCost > inventoryManager.goldCounter ||
-            nextLevelCost.WoodCost > inventoryManager.woodCounter ||
-            nextLevelCost.StoneCost > inventoryManager.stoneCounter ||
-            nextLevelCost.IronCost > inventoryManager.ironCounter)
-        {
-            return;
-        }
-        else 
-        {
-            inventoryManager.goldCounter -= nextLevelCost.CoinCost;
-            inventoryManager.woodCounter -= nextLevelCost.WoodCost;
-            inventoryManager.stoneCounter -= nextLevelCost.StoneCost;
-            inventoryManager.ironCounter -= nextLevelCost.IronCost;
-            
-            inventoryManager.HandleInventoryChange();
-        }
-
         if (upgradeEffect != null && nextLevel - 1 < TownHallDictator.townHallLevel && isHovered == true && upgradePanel.activeSelf == true)
         {
+            // upgrade cost logic
+            if (nextLevelCost == null ||
+                nextLevelCost.CoinCost > inventoryManager.goldCounter ||
+                nextLevelCost.WoodCost > inventoryManager.woodCounter ||
+                nextLevelCost.StoneCost > inventoryManager.stoneCounter ||
+                nextLevelCost.IronCost > inventoryManager.ironCounter)
+            {
+                return;
+            }
+            else
+            {
+                inventoryManager.goldCounter -= nextLevelCost.CoinCost;
+                inventoryManager.woodCounter -= nextLevelCost.WoodCost;
+                inventoryManager.stoneCounter -= nextLevelCost.StoneCost;
+                inventoryManager.ironCounter -= nextLevelCost.IronCost;
+
+                inventoryManager.HandleInventoryChange();
+            }
+
             nextLevelCost = nextLevelCost.nextLevel;
             StartCoroutine(UpgradeWithEffect());
         }
