@@ -5751,6 +5751,7 @@ MonoBehaviour:
   spawnRate: 1
   enemyPrefab: {fileID: 5964319739546892403, guid: f0e4c73eb0bf7f54cae77b0a468a32af, type: 3}
   enemies: []
+  canSpawnEnemies: 1
 --- !u!1 &1046952621 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1782866430624832327, guid: 0fe308eccb09a714fbb5b2dc5d07ef9c, type: 3}
@@ -6162,7 +6163,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.58, y: 1.13}
+    oldSize: {x: 1.46, y: 1.49}
     newSize: {x: 1.58, y: 1.13}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -6239,7 +6240,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -945433652, guid: e96242dc01816a24a947fb94b78604ca, type: 3}
+  m_Sprite: {fileID: 662466067, guid: 60a6ee01ebabf58488421b0855318272, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -6259,7 +6260,7 @@ Transform:
   m_GameObject: {fileID: 1089518116}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.01, y: -0.7, z: 0}
   m_LocalScale: {x: 0.797, y: 0.797, z: 0.797}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6350,7 +6351,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.58, y: 1.13}
+    oldSize: {x: 1.46, y: 1.49}
     newSize: {x: 1.58, y: 1.13}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
