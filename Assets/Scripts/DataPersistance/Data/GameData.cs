@@ -27,7 +27,7 @@ public class GameData
     public int Minute;
     public GameData()
     {
-        playerPosition = new Vector3(0f, -1f, 0f);
+        playerPosition = new Vector3(0f, -0.84f, 0f);
         playerFlip = false;
         DayCount = 1;
         Hour = 2;

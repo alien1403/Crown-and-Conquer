@@ -115,10 +115,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 2387
-        width: 184
-        height: 143
+        width: 188
+        height: 148
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -131,99 +131,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mounts_running2_1
-      rect:
-        serializedVersion: 2
-        x: 3
-        y: 2168
-        width: 184
-        height: 142
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 95129043e61114a44a9bdb81e6730117
-      internalID: -1652940511
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mounts_running2_2
-      rect:
-        serializedVersion: 2
-        x: 1
-        y: 1933
-        width: 187
-        height: 140
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6d0258f5c80677141b8a1c9fad616801
-      internalID: -731035515
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mounts_running2_3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1692
-        width: 184
-        height: 140
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 835a1891e02e64e44a068722e6957fef
-      internalID: -168374180
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mounts_running2_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1458
-        width: 181
-        height: 146
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 64b61ba00d3b18d47b2a6c3373d0505d
-      internalID: -493034742
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: mounts_running2_5
       rect:
         serializedVersion: 2
         x: 0
-        y: 1225
-        width: 178
-        height: 146
+        y: 2170
+        width: 188
+        height: 148
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -236,99 +152,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mounts_running2_6
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 996
-        width: 184
-        height: 146
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3826748123b5bb04bb53b032af0dcf84
-      internalID: 1971808472
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mounts_running2_7
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 774
-        width: 187
-        height: 135
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 88d5f8e7c6e3b54488fe04298c078024
-      internalID: -916113468
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mounts_running2_8
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 572
-        width: 177
-        height: 129
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dfd5bfac645f8634da68c0b23875ee28
-      internalID: 842663717
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mounts_running2_9
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 380
-        width: 182
-        height: 131
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bb97ed95a67216e41bc42831fea2706f
-      internalID: -1306682673
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: mounts_running2_10
       rect:
         serializedVersion: 2
         x: 0
-        y: 188
-        width: 185
-        height: 137
+        y: 1933
+        width: 188
+        height: 148
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -341,22 +173,190 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mounts_running2_11
+      name: mounts_running2_14
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 187
-        height: 136
+        y: 1693
+        width: 188
+        height: 148
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c277a279245e0be4aa2f4e508bd6c614
-      internalID: -866940188
+      spriteID: 114675f1b06fc614a84422ff1eb48c1a
+      internalID: 538502693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mounts_running2_19
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1457
+        width: 188
+        height: 148
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fa852a564e7ed44b9fff258b8a3729d
+      internalID: 2082070789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mounts_running2_24
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 1219
+        width: 188
+        height: 148
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d5dcda86299a8746955d52f5372b0f6
+      internalID: 1507409539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mounts_running2_29
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 995
+        width: 188
+        height: 148
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9a5bdd41fafabb4ea21e24558d2fc45
+      internalID: 1394472129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mounts_running2_34
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 774
+        width: 188
+        height: 148
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c518f851a225694190dd8695baf30d8
+      internalID: -1483407708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mounts_running2_39
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 574
+        width: 188
+        height: 148
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 274021aebd22cc24bb86661a73e0d996
+      internalID: -1812682087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mounts_running2_44
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 188
+        height: 148
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e6b80df4f2f3f24a82576f7d1ef7cb4
+      internalID: -1768622974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mounts_running2_49
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 188
+        width: 188
+        height: 148
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04f200e6483615448b7b97e8dd82682a
+      internalID: 2093864961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mounts_running2_54
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 0
+        width: 188
+        height: 148
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42b1f170f64f5d84eb3da467ba555f55
+      internalID: -1030989466
       vertices: []
       indices: 
       edges: []
@@ -376,10 +376,57 @@ TextureImporter:
       mounts_running2_1: -1652940511
       mounts_running2_10: -1896780354
       mounts_running2_11: -866940188
+      mounts_running2_12: -312719323
+      mounts_running2_13: 1467059705
+      mounts_running2_14: 538502693
+      mounts_running2_15: -1504516009
+      mounts_running2_16: 821981991
+      mounts_running2_17: 452698135
+      mounts_running2_18: -1847510761
+      mounts_running2_19: 2082070789
       mounts_running2_2: -731035515
+      mounts_running2_20: 1565898793
+      mounts_running2_21: 996424407
+      mounts_running2_22: -1223830556
+      mounts_running2_23: 1160391230
+      mounts_running2_24: 1507409539
+      mounts_running2_25: 969613392
+      mounts_running2_26: -449394819
+      mounts_running2_27: 18349033
+      mounts_running2_28: 1451844144
+      mounts_running2_29: 1394472129
       mounts_running2_3: -168374180
+      mounts_running2_30: -1464929420
+      mounts_running2_31: -268561642
+      mounts_running2_32: 1222153298
+      mounts_running2_33: 180978755
+      mounts_running2_34: -1483407708
+      mounts_running2_35: -1727047312
+      mounts_running2_36: 392125873
+      mounts_running2_37: -1263493412
+      mounts_running2_38: -1570540732
+      mounts_running2_39: -1812682087
       mounts_running2_4: -493034742
+      mounts_running2_40: -371834624
+      mounts_running2_41: 1812059794
+      mounts_running2_42: -980796997
+      mounts_running2_43: 444422902
+      mounts_running2_44: -1768622974
+      mounts_running2_45: 2059036109
+      mounts_running2_46: -62086347
+      mounts_running2_47: 1858984002
+      mounts_running2_48: 60475082
+      mounts_running2_49: 2093864961
       mounts_running2_5: 408935945
+      mounts_running2_50: 1074668092
+      mounts_running2_51: 1618915584
+      mounts_running2_52: 1576211243
+      mounts_running2_53: -1209257811
+      mounts_running2_54: -1030989466
+      mounts_running2_55: -645859265
+      mounts_running2_56: -111124059
+      mounts_running2_57: 1706094809
+      mounts_running2_58: 173802151
       mounts_running2_6: 1971808472
       mounts_running2_7: -916113468
       mounts_running2_8: 842663717

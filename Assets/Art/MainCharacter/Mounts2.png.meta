@@ -115,8 +115,8 @@ TextureImporter:
         serializedVersion: 2
         x: 24
         y: 1609
-        width: 146
-        height: 148
+        width: 158
+        height: 150
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,76 +131,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mounts2_1
-      rect:
-        serializedVersion: 2
-        x: 1
-        y: 1389
-        width: 155
-        height: 149
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c1b6f17166a444a4abff069b6d22bda8
-      internalID: -858287090
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mounts2_2
+      name: Mounts2_5
       rect:
         serializedVersion: 2
         x: 0
-        y: 1169
+        y: 1388
         width: 158
-        height: 144
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 82653397e26c21a4fb1154593500cb30
-      internalID: 2058827470
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mounts2_3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 927
-        width: 155
-        height: 149
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 51d7f2f3198067f40a181c1c9283e211
-      internalID: 2055879689
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mounts2_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 687
-        width: 150
-        height: 148
+        height: 150
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -215,13 +152,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mounts2_5
+      name: Mounts2_10
       rect:
         serializedVersion: 2
         x: 0
-        y: 447
-        width: 152
-        height: 151
+        y: 1168
+        width: 158
+        height: 150
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1a836b20e8aae014781e383a3e4dbf1f
-      internalID: -1277298397
+      spriteID: a7b99453d7a80b74da0130bd4efbb61e
+      internalID: -609546062
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mounts2_6
+      name: Mounts2_15
       rect:
         serializedVersion: 2
         x: 0
-        y: 228
-        width: 147
-        height: 148
+        y: 930
+        width: 158
+        height: 150
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,20 +187,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 080fc7ec1d9de9b45a4e10589d069e01
-      internalID: 627730945
+      spriteID: a6b69e0d615c74f40992caa88cf3cadb
+      internalID: 1397863468
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mounts2_7
+      name: Mounts2_20
       rect:
         serializedVersion: 2
         x: 0
-        y: 10
-        width: 147
-        height: 149
+        y: 689
+        width: 158
+        height: 150
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -271,8 +208,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f548527c012289548a496c673990e352
-      internalID: -1126863088
+      spriteID: 0dcb3822d817d924cbe80cb6453e3836
+      internalID: 902916949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mounts2_25
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 450
+        width: 158
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a29b2515085f78418bc5afb5e683631
+      internalID: -456379632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mounts2_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 230
+        width: 158
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f793932f7d94f0c4e9ff8313dfe79ba7
+      internalID: 3359807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mounts2_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 12
+        width: 158
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7312800f1468314dbb61fd8e8263356
+      internalID: 2118215094
       vertices: []
       indices: 
       edges: []
@@ -290,12 +290,45 @@ TextureImporter:
     nameFileIdTable:
       Mounts2_0: 662466067
       Mounts2_1: -858287090
+      Mounts2_10: -609546062
+      Mounts2_11: -890665981
+      Mounts2_12: -186639668
+      Mounts2_13: 1835832441
+      Mounts2_14: 928295939
+      Mounts2_15: 1397863468
+      Mounts2_16: 1808809333
+      Mounts2_17: 1965861207
+      Mounts2_18: 269258948
+      Mounts2_19: -68144500
       Mounts2_2: 2058827470
+      Mounts2_20: 902916949
+      Mounts2_21: 1194682112
+      Mounts2_22: 1072563662
+      Mounts2_23: -1565638685
+      Mounts2_24: 2061574713
+      Mounts2_25: -456379632
+      Mounts2_26: -841846333
+      Mounts2_27: -772377818
+      Mounts2_28: 682703203
+      Mounts2_29: 2136231412
       Mounts2_3: 2055879689
+      Mounts2_30: 3359807
+      Mounts2_31: -313385562
+      Mounts2_32: 761217778
+      Mounts2_33: -1151201348
+      Mounts2_34: -595361173
+      Mounts2_35: 2118215094
+      Mounts2_36: -1575332539
+      Mounts2_37: -966370250
+      Mounts2_38: 3383512
+      Mounts2_39: 1432124023
       Mounts2_4: 566224198
+      Mounts2_40: -1932500827
       Mounts2_5: 3142399
       Mounts2_6: -1277298397
       Mounts2_7: 627730945
+      Mounts2_8: 1337975520
+      Mounts2_9: 1379543552
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

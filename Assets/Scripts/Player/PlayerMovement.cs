@@ -63,8 +63,13 @@ public class PlayerMovement : MonoBehaviour, IDataPersistence
     public Sprint sprint;
     public float sprintDuration;
     private MapController mapController;
+    void Awake()
+    {
+        Debug.Log(this.transform.position);
+    }
     void Start()
     {
+        Debug.Log(this.transform.position);
         mapController = FindObjectOfType<MapController>();
         rigidBody = GetComponent<Rigidbody2D>();
         sprint.sprintCooldown = sprintDuration;
