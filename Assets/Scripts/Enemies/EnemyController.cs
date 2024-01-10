@@ -12,6 +12,10 @@ public class EnemyController : MonoBehaviour
     private Transform leftCliff;
     private Transform rightCliff;
 
+    public GameObject portalPrefab;  // Drag your Portal Prefab here in the Inspector
+    public GameObject portalPrefab2;
+    bool portalspawn = false;
+
     public Transform enemyPrefab;
     public List<Transform> enemies = new List<Transform>();
 
@@ -118,7 +122,17 @@ public class EnemyController : MonoBehaviour
                 {
                     Vector3 spawnPosition = Random.Range(0, 2) == 0 ? leftCliff.position : rightCliff.position;
                     spawnPosition += Vector3.forward * Random.Range(-3f, 3f);
-
+                    if(portalspawn == false)
+                    {
+                        Vector3 spawnportal1 = leftCliff.position;
+                        Vector3 spawnportal2 = rightCliff.position;
+                        spawnportal1.y = spawnportal1.y - 2;
+                        spawnportal2.y = spawnportal2.y - 2;
+                        GameObject portalInstance = Instantiate(portalPrefab, spawnportal1, Quaternion.identity);
+                        GameObject portalInstance2 = Instantiate(portalPrefab2, spawnportal2, Quaternion.identity);
+                        portalspawn = true;
+                    }
+                    
                     Transform newEnemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
                     enemies.Add(newEnemy);
                 }
