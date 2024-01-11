@@ -17,6 +17,7 @@ public class WorldTime : MonoBehaviour, IDataPersistence
 
     private void Start()
     {
+        ChangeDayCounterText();
         StartCoroutine(AddMinute());
     }
     public float GetDayLength(){
@@ -33,10 +34,26 @@ public class WorldTime : MonoBehaviour, IDataPersistence
     public void IncrementDayCount()
     {
         dayCount++;
-        dayCounterText.text = "Day " + dayCount.ToString();
+        ChangeDayCounterText();
+    }
 
-        if(dayCount % 10 == 0){
+    public void ChangeDayCounterText()
+    {
+        if (dayCount % 10 == 0)
+        {
+            dayCounterText.text = "Day " + dayCount.ToString();
+            dayCounterText.color = Color.red;
             Debug.Log("Red Night");
+        }
+        else if (dayCount % 10 == 1 && dayCount != 1)
+        {
+            dayCounterText.text = "Day " + dayCount.ToString();
+            dayCounterText.color = Color.white;
+            Debug.Log("White Night");
+        }
+        else
+        {
+            dayCounterText.text = "";
         }
     }
 
