@@ -16,7 +16,7 @@ public class WorldLight : MonoBehaviour
     private Gradient _gradientRedNight;
     public WorldTime worldTime;
 
-    public EnemyController enemyController;
+    public EnemyControllerRazvan enemyController;
     private void Awake()
     {
         _light = GetComponent<Light2D>();

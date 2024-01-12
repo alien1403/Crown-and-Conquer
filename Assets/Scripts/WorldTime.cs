@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Linq;
 
 public class WorldTime : MonoBehaviour, IDataPersistence
 {
@@ -10,8 +11,10 @@ public class WorldTime : MonoBehaviour, IDataPersistence
     public event EventHandler<TimeSpan> WorldTimeChanged;
     [SerializeField]
     private float _dayLength = 300f;
-    private TimeSpan _currentTime;
+    public TimeSpan _currentTime;
     private float _minuteLength => _dayLength / WorldTimeConstants.MinutesInDay;
+    [SerializeField]
+    public int _portalActivationHour;
 
     public TextMeshProUGUI dayCounterText;
 
@@ -27,6 +30,7 @@ public class WorldTime : MonoBehaviour, IDataPersistence
     private IEnumerator AddMinute()
     {
         _currentTime += TimeSpan.FromMinutes(1);
+        Debug.Log(_currentTime);
         WorldTimeChanged?.Invoke(this, _currentTime);
         yield return new WaitForSeconds(_minuteLength);
         StartCoroutine(AddMinute());
@@ -54,6 +58,23 @@ public class WorldTime : MonoBehaviour, IDataPersistence
         else
         {
             dayCounterText.text = "";
+        }
+    }
+    public void TriggerPortalActivation()
+    {
+        IEnumerable<PortalAnimator> portalAnimators = FindObjectsOfType<PortalAnimator>();
+        foreach (PortalAnimator portalAnimator in portalAnimators)
+        {
+            portalAnimator.TriggerStart();
+        }
+    }
+
+    public void TriggerPortalDeactivation()
+    {
+        IEnumerable<PortalAnimator> portalAnimators = FindObjectsOfType<PortalAnimator>();
+        foreach (PortalAnimator portalAnimator in portalAnimators)
+        {
+            portalAnimator.TriggerEnd();
         }
     }
 
