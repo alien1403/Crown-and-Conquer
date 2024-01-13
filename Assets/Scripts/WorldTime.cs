@@ -30,7 +30,6 @@ public class WorldTime : MonoBehaviour, IDataPersistence
     private IEnumerator AddMinute()
     {
         _currentTime += TimeSpan.FromMinutes(1);
-        Debug.Log(_currentTime);
         WorldTimeChanged?.Invoke(this, _currentTime);
         yield return new WaitForSeconds(_minuteLength);
         StartCoroutine(AddMinute());

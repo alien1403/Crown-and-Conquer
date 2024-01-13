@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 612059508511276742}
   - component: {fileID: 1280413614450027841}
   - component: {fileID: 404474094989997488}
+  - component: {fileID: 6277895985799189934}
   m_Layer: 6
   m_Name: Upgrade Effect
   m_TagString: Untagged
@@ -4828,3 +4829,15 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &6277895985799189934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6508612207409664823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab3bb1efee7134040a0d5af839676961, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

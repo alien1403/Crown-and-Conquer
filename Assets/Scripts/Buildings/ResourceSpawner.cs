@@ -22,13 +22,13 @@ public class ResourceSpawner : MonoBehaviour
 
     void Update()
     {
-        if (buildingController.nextLevel > 1)
+        if (buildingController.currentLevel > 0)
         {
             timer += Time.deltaTime;
 
-            if(buildingController.nextLevel == 2)
+            if(buildingController.currentLevel == 1)
                 condition = timer >= spawnIntervalForLevel1;
-            else if(buildingController.nextLevel == 3)
+            else if(buildingController.currentLevel == 2)
                 condition = timer >= spawnIntervalForLevel2;
             else
                 condition = timer >= spawnIntervalForLevel3;

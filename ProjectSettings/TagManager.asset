@@ -7,6 +7,9 @@ TagManager:
   - Chunk
   - Selectable
   - TreeTrunk
+  - Enemy
+  - Wall
+  - Cliff
   layers:
   - Default
   - TransparentFX

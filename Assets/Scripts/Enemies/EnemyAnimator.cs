@@ -4,15 +4,38 @@ using UnityEngine;
 
 public class EnemyAnimator : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private Animator animator;
+    private EnemyController enemyController;
+    private SpriteRenderer spriteRenderer;
+    private void Start()
     {
-        
+        animator = GetComponent<Animator>();
+        enemyController = GetComponent<EnemyController>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        SpriteDirectionChecker();
+    }
+    void SpriteDirectionChecker()
+    {
+        if(enemyController.moveDirection.x < 0)
+            spriteRenderer.flipX = true;
+        else
+            spriteRenderer.flipX = false;
+    }
+    public void TriggerAttack()
+    {
+        Debug.Log("Trigger Attack");
+        animator.SetTrigger("Attack");
+        Debug.Log("Attack triggered");
+    }
+    public void TriggerDeath()
+    {
+        animator.SetTrigger("Die");
+    }
+    public void TriggerHit()
+    {
+        animator.SetTrigger("Hit");
     }
 }

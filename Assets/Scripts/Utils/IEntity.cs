@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class TownHallDictator
+public interface IEntity
 {
-    public static int townHallLevel;
+    public void TakeDamage(float damageTaken);
 }
