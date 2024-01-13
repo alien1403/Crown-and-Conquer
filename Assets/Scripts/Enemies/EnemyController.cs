@@ -1,146 +1,107 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : MonoBehaviour, IEntity
 {
-    public Transform player;
-    public float moveSpeed = 2f;
-    private float moveSpeedFactor = 0.2f;
-    private float enemyYValue = -0.918f;
-    public float spawnRate;
-    private Transform leftCliff;
-    private Transform rightCliff;
+    EnemyAnimator enemyAnimator;
+    private float currentHealth;
+    private IEntity enemyInContact = null;
+    private int spawnDay;
+    private WorldTime worldTime;
+    private Vector3 spawnLocation;
+    private bool isPushedBack = false;
+    private Vector2 pushbackPosition;
 
-    public Transform enemyPrefab;
-    public List<Transform> enemies = new List<Transform>();
 
-    private bool canCollide = true;
-    public bool canSpawnEnemies = true;
+    [HideInInspector]
+    public Vector2 moveDirection;
+    public int SpawnDay { get => spawnDay; set => spawnDay = value; }
+    public EnemyScriptableObject enemyScriptableObject;
 
-    void Start()
+    protected void Start()
     {
-        if (player == null)
-        {
-            player = GameObject.FindGameObjectWithTag("Player").transform;
-        }
-        if (enemyPrefab.GetComponent<Collider2D>() == null)
-        {
-            enemyPrefab.gameObject.AddComponent<BoxCollider2D>();
-        }
-
-        spawnRate = 0.0f;
-        
-        StartCoroutine(SearchForCliffs());
-        StartCoroutine(SpawnEnemies());
-        StartCoroutine(CheckCollisions());
+        enemyAnimator = GetComponent<EnemyAnimator>();
+        currentHealth = enemyScriptableObject.MaxHealth;
+        worldTime = FindObjectOfType<WorldTime>();
     }
-
-    void Update()
+    public void Update()
     {
-        foreach (Transform enemy in enemies)
+        // for now we make it move to the center of the map, if it encounters a wall or the player it will attack it
+        if(isPushedBack)
         {
-            if (player != null && enemy != null)
+            if (Vector2.Distance(transform.position, pushbackPosition) < 0.01f)
             {
-                Vector3 direction = player.position - enemy.position;
-
-                if (direction.magnitude >= 0.5f)
-                {
-                    direction.Normalize();
-                    enemy.Translate(direction * moveSpeed * moveSpeedFactor * Time.deltaTime);
-                    enemy.position = new Vector3(enemy.position.x, enemyYValue, enemy.position.z);
-
-                    if (direction.x < 0)
-                    {
-                        enemy.localScale = new Vector3(-2, 2, 2);
-                    }
-                    else if (direction.x > 0)
-                    {
-                        enemy.localScale = new Vector3(2, 2, 2);
-                    }
-                }
-                else
-                {
-                    if (canCollide)
-                    {
-                        Debug.Log("Enemy near the player");
-                        canCollide = false;
-                    }
-                }
+                isPushedBack = false; // Set back to false when the pushback is completed
+                return;
             }
-        }
-    }
-
-    IEnumerator SearchForCliffs()
-    {
-        yield return new WaitForSeconds(0.5f);
-        GameObject floorsObject = GameObject.Find("Floors");
-
-        if (floorsObject != null)
+            transform.position = Vector2.MoveTowards(transform.position, pushbackPosition, (enemyScriptableObject.MoveSpeed + 2) * Time.deltaTime);
+            return;
+        }   
+        if (worldTime._currentTime.Days == spawnDay)
         {
-            foreach (Transform child in floorsObject.transform)
+            if (enemyInContact != null)
             {
-                if (child.name.Contains("Cliff"))
-                {
-                    Transform backgroundChild = child.Find("Background");
-                    if (backgroundChild != null)
-                    {
-                        float childX = backgroundChild.position.x;
-
-                        if (childX < 0)
-                        {
-                            if (leftCliff == null || childX > leftCliff.position.x)
-                            {
-                                leftCliff = backgroundChild;
-                            }
-                        }
-                        else
-                        {
-                            if (rightCliff == null || childX < rightCliff.position.x)
-                            {
-                                rightCliff = backgroundChild;
-                            }
-                        }
-                    }
-                }
+                return;
             }
+            Vector2 targetPosition = new Vector2(0f, transform.position.y);
+            transform.position = Vector2.MoveTowards(transform.position, targetPosition, enemyScriptableObject.MoveSpeed * Time.deltaTime);
+            moveDirection = targetPosition - (Vector2)transform.position;
+            return;
         }
+        moveDirection = spawnLocation - transform.position;
+        transform.position = Vector2.MoveTowards(transform.position, spawnLocation, enemyScriptableObject.MoveSpeed * Time.deltaTime);
     }
-
-    IEnumerator SpawnEnemies()
+    public void TakeDamage(float damageTaken)
     {
-        if(canSpawnEnemies){
-            while (true)
-            {
-                yield return new WaitForSeconds(spawnRate);
-
-                if (leftCliff != null && rightCliff != null && enemyPrefab != null)
-                {
-                    Vector3 spawnPosition = Random.Range(0, 2) == 0 ? leftCliff.position : rightCliff.position;
-                    spawnPosition += Vector3.forward * Random.Range(-3f, 3f);
-
-                    Transform newEnemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
-                    enemies.Add(newEnemy);
-                }
-            }
-        }
-    }
-
-    IEnumerator CheckCollisions()
-    {
-        while (true)
+        currentHealth -= damageTaken;
+        if(currentHealth > 0)
         {
-            yield return new WaitForSeconds(1f);
-            canCollide = true;
+            enemyAnimator.TriggerHit();
+            return;
+        }
+        enemyAnimator.TriggerDeath();
+    }
+    public void Kill()
+    {
+        Destroy(gameObject);
+    }
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("Enemy in contact with " + collision.gameObject.tag);
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            Debug.Log("Enemy in contact with a wall");
+            enemyAnimator.TriggerAttack();
+            enemyInContact = collision.GetComponent<IEntity>();
+            return;
+        }
+        if(collision.gameObject.CompareTag("Cliff"))
+        {
+            enemyAnimator.TriggerDeath();
+            return;
         }
     }
-
-    private void OnTriggerEnter2D(Collider2D other)
+    protected virtual void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log("Trigger Enter Detected with: " + other.gameObject.name);
-        if (other.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Wall"))
         {
-            Debug.Log("Enemy collided with the player!");
+            enemyInContact = null;
         }
+    }
+    public void Attack()
+    {
+        if (enemyInContact != null)
+        {
+            enemyInContact.TakeDamage(enemyScriptableObject.AttackDamage);
+        }
+    }
+    private void PushBack()
+    {
+        isPushedBack = true;
+        int sign = moveDirection.x >= 0 ? -1 : 1;
+        pushbackPosition = new Vector2(transform.position.x + sign * 0.5f, transform.position.y);
     }
 }
