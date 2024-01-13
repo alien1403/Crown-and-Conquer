@@ -63,10 +63,6 @@ public class PlayerMovement : MonoBehaviour, IDataPersistence
     public Sprint sprint;
     public float sprintDuration;
     private MapController mapController;
-    void Awake()
-    {
-        Debug.Log(this.transform.position);
-    }
     void Start()
     {
         mapController = FindObjectOfType<MapController>();
