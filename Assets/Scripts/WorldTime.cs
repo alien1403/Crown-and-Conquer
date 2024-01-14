@@ -38,6 +38,7 @@ public class WorldTime : MonoBehaviour, IDataPersistence
     {
         dayCount++;
         ChangeDayCounterText();
+        EnemyManager.instance.enemiesSpawnedInCurrentDay = false;
     }
 
     public void ChangeDayCounterText()
@@ -61,15 +62,24 @@ public class WorldTime : MonoBehaviour, IDataPersistence
     }
     public void TriggerPortalActivation()
     {
+        if(dayCount % 10 == 1)
+        {
+            return;
+        }
         IEnumerable<PortalAnimator> portalAnimators = FindObjectsOfType<PortalAnimator>();
         foreach (PortalAnimator portalAnimator in portalAnimators)
         {
             portalAnimator.TriggerStart();
         }
+        EnemyManager.instance.SpawnEnemies();
     }
 
     public void TriggerPortalDeactivation()
     {
+        if (dayCount % 10 == 1)
+        {
+            return;
+        }
         IEnumerable<PortalAnimator> portalAnimators = FindObjectsOfType<PortalAnimator>();
         foreach (PortalAnimator portalAnimator in portalAnimators)
         {
