@@ -3,20 +3,24 @@ using UnityEngine.SceneManagement;
 
 public class SampleSceneController : MonoBehaviour
 {
+    public static SampleSceneController _instance { get; private set; }
+
     public CanvasGroup OptionPanel;
     public GameObject pauseMenuUI;
-    public GameObject inventoryUI;
+    public GameObject inventoryPanel;
     private bool isPauseMenuActive = false;
 
+    private void Awake()
+    {
+        _instance = this;
+    }
     private void Start()
     {
         pauseMenuUI.SetActive(false);
-        inventoryUI.SetActive(false);
     }
 
     void Update()
     {
-        ToggleInventory();
         if (Input.GetKeyUp(KeyCode.Escape))
         {
             TogglePauseMenu();
@@ -27,7 +31,6 @@ public class SampleSceneController : MonoBehaviour
     {
         Time.timeScale = 1;
         pauseMenuUI.SetActive(false);
-        inventoryUI.SetActive(true); 
         isPauseMenuActive = false;
     }
 
@@ -54,7 +57,6 @@ public class SampleSceneController : MonoBehaviour
         {
             Time.timeScale = 1;
             pauseMenuUI.SetActive(false);
-            inventoryUI.SetActive(true);
             EventSystemManager.Instance.SetEventSystemActive(false);
             isPauseMenuActive = false;
         }
@@ -62,21 +64,16 @@ public class SampleSceneController : MonoBehaviour
         {
             Time.timeScale = 0;
             pauseMenuUI.SetActive(true);
-            inventoryUI.SetActive(false); 
             EventSystemManager.Instance.SetEventSystemActive(true);
             isPauseMenuActive = true;
         }
     }
 
-    void ToggleInventory()
+    public void ToggleInventoryPanel(bool value)
     {
-        if (SceneManager.GetActiveScene().name == "SampleScene" && isPauseMenuActive == false)
+        if (!pauseMenuUI.activeSelf)
         {
-            inventoryUI.SetActive(true); 
-        }
-        else
-        {
-            inventoryUI.SetActive(false);
+            inventoryPanel.SetActive(value);
         }
     }
 }

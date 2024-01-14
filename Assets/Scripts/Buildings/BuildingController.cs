@@ -62,6 +62,7 @@ public class BuildingController : MonoBehaviour
         {
             isHovered = true;
             upgradePanel.SetActive(true);
+            SampleSceneController._instance.ToggleInventoryPanel(true);
         }
     }
 
@@ -70,6 +71,7 @@ public class BuildingController : MonoBehaviour
         // flag for hovering
         isHovered = false;
         upgradePanel.SetActive(false);
+        SampleSceneController._instance.ToggleInventoryPanel(false);
     }
 
     protected virtual void OnMouseDown()
@@ -92,6 +94,7 @@ public class BuildingController : MonoBehaviour
         }
         isHovered = false;
         upgradePanel.SetActive(false);
+        SampleSceneController._instance.ToggleInventoryPanel(false);
         if(nextLevelScriptableObject != null)
         {
             upgradePanelController.UpdatePanel();

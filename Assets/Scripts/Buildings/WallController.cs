@@ -35,6 +35,7 @@ public class WallController : BuildingController
         }
         isHovered = false;
         upgradePanel.SetActive(false);
+        SampleSceneController._instance.ToggleInventoryPanel(false);
         if (nextLevelScriptableObject != null)
         {
             upgradePanelController.UpdatePanel();
