@@ -25,6 +25,11 @@ public class GameData
     public int DayCount;
     public int Hour;
     public int Minute;
+
+    //Enemies variables
+    public List<EnemyPropertiesUtils> enemies = new List<EnemyPropertiesUtils>();
+    public bool enemiesSpawnedInCurrentDay;
+
     public GameData()
     {
         playerPosition = new Vector3(0f, -0.84f, 0f);
@@ -34,5 +39,6 @@ public class GameData
         Minute = 30;
         LeftBoundary = 0;
         RightBoundary = 0;
+        enemiesSpawnedInCurrentDay = false;
     }
 }

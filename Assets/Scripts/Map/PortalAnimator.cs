@@ -5,10 +5,12 @@ using UnityEngine;
 public class PortalAnimator : MonoBehaviour//, IDataPersistence
 {
     private Animator animator;
+    private PortalController portalController;
     void Start()
     {
         animator = GetComponent<Animator>();
         WorldTime worldTime = FindObjectOfType<WorldTime>();
+        portalController = GetComponent<PortalController>();
         if(worldTime._currentTime.Hours > worldTime._portalActivationHour)
         {
             TriggerStart();
