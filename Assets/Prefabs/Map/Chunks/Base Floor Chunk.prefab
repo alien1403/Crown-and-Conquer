@@ -291,6 +291,10 @@ MonoBehaviour:
     probability: 1
   - gameObject: {fileID: 2133158117692628267, guid: 8b2db8efc75f0dc4c981874e354597a7, type: 3}
     probability: 1
+  - gameObject: {fileID: 8577669532633253315, guid: 22d260637fa29c345a28e12ee4ad9cc0, type: 3}
+    probability: 0.3
+  - gameObject: {fileID: 1202799386686619502, guid: 1b27cee21451f3f4ca389e2d4d7e32a4, type: 3}
+    probability: 0.1
 --- !u!114 &6291584551266567878
 MonoBehaviour:
   m_ObjectHideFlags: 0
