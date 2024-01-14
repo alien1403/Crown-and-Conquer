@@ -228,7 +228,7 @@ public class MapController : MonoBehaviour, IDataPersistence
                     position = chunk.transform.position,
                     chunkGUID = chunkProp.chunkPrefabGUID,
                     propsGUIDs = chunkProp.GetChunkPropPrefabsGUIDs(),
-                    flipX = chunk.transform.localScale.x > 0 ? 1 : -1
+                    flipX = chunk.transform.localScale.x > 0 ? 1 : -1,
                 });
             }
         }
