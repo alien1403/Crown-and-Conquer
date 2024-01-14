@@ -66,6 +66,7 @@ public class DataPersistenceManager : MonoBehaviour
             .OfType<IDataPersistence>();
         return new List<IDataPersistence>(dataPersistanceObjects);
     }
+#if UNITY_EDITOR
     public string GetPrefabGUIDFromInstatiatedGameObject(GameObject instantiatedObject)
     {
         if(instantiatedObject != null)
@@ -77,6 +78,7 @@ public class DataPersistenceManager : MonoBehaviour
         }
         return string.Empty;
     }
+#endif
     public GameObject GetPrefabFromGUID(string guid)
     {
         if(prefabsDictionary.GUIDPrefabs.ContainsKey(guid))

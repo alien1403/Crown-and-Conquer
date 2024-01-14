@@ -8,10 +8,10 @@ using UnityEngine;
 public class GameData
 {
     // Player stats
-    public int GoldCounter;
-    public int WoodCounter;
-    public int StoneCounter;
-    public int IronCounter;
+    public int GoldCounter = 50;
+    public int WoodCounter = 50;
+    public int StoneCounter = 50;
+    public int IronCounter = 50;
     public Vector3 playerPosition;
     public bool playerFlip;
 

@@ -23,6 +23,7 @@ public class SampleSceneController : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.Escape))
         {
+            ToggleInventoryPanel(false);
             TogglePauseMenu();
         }
     }

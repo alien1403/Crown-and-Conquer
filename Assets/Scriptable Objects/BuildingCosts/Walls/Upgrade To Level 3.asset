@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a34e529c00907f84fa402f80ee98d715, type: 3}
   m_Name: Upgrade To Level 3
   m_EditorClassIdentifier: 
-  CoinCost: 0
-  WoodCost: 0
-  StoneCost: 0
-  IronCost: 0
+  CoinCost: 4
+  WoodCost: 4
+  StoneCost: 4
+  IronCost: 4
   nextLevel: {fileID: 0}
   Health: 500
