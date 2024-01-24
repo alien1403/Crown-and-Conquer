@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
+
+
+
+
 public class MainMenuController : MonoBehaviour
 {
     public CanvasGroup OptionPanel;
@@ -11,10 +16,21 @@ public class MainMenuController : MonoBehaviour
         SceneManager.LoadScene("SampleScene");
     }
 
+
+
+
+
+
+
     public void Options()
     {
         OptionPanel.alpha = 1.0f; 
         OptionPanel.blocksRaycasts = true;
+
+
+
+
+        
     }
 
     public void Back()
